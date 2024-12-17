@@ -14,7 +14,8 @@
                         VerticalAlignment="{TemplateBinding VerticalAlignment}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}" />
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Focusable="False" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
