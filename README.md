@@ -4,19 +4,19 @@ This project provides a simple markdown renderer for WPF.
 This implementation uses the popular [Markdig](https://github.com/xoofx/markdig) library for parsing.
 At the current state, not all markdown features are supported. Styling options for the markdown blocks need to be improved.
 
-### Supported features:
--[x] Paragraphs
--[x] InlineEmphasis
--[x] Headings
--[x] InlineCode
--[x] InlineHyperlink 
--[x] Lists (unordered & ordered)
--[x] ThematicBreak
+#### Supported features:
+- [x] Paragraphs
+- [x] InlineEmphasis
+- [x] Headings
+- [x] InlineCode
+- [x] InlineHyperlink 
+- [x] Lists (unordered & ordered)
+- [x] ThematicBreak
 
-### Features to implement:
--[ ] CodeBlocks
--[ ] Images
--[ ] Tables
+#### Features to implement:
+- [ ] CodeBlocks
+- [ ] Images
+- [ ] Tables
 
 ## Recommended setup
 
@@ -61,5 +61,6 @@ MarkdownTextBlock.Config = myConfig;
 
 ## Third party notices
 
-The project is a port of the CommunityToolkit MarkdownTextBlock component to the WPF framework
-see [CommunityToolkit/Labs-Windows/MarkdownTextBlock](https://github.com/CommunityToolkit/Labs-Windows/tree/a37acd33031037daa4d39318e3a10741b1c046ea/components/MarkdownTextBlock)
+The project is a port of the CommunityToolkit MarkdownTextBlock component to the WPF framework.
+
+See [CommunityToolkit/Labs-Windows/MarkdownTextBlock](https://github.com/CommunityToolkit/Labs-Windows/tree/a37acd33031037daa4d39318e3a10741b1c046ea/components/MarkdownTextBlock)
