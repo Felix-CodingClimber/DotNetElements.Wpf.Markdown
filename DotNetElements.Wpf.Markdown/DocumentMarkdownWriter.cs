@@ -43,7 +43,14 @@ internal class DocumentMarkdownWriter : RendererBase
 		return FlowDocument ?? new();
 	}
 
-	public void ReloadDocument()
+    public void ClearDocument()
+    {
+        stack.Clear();
+        FlowDocument.Document.Blocks.Clear();
+        stack.Push(FlowDocument);
+    }
+
+    public void ReloadDocument()
 	{
 		stack.Clear();
 		FlowDocument.Document.Blocks.Clear();

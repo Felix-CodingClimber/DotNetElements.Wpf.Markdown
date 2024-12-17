@@ -9,123 +9,136 @@ namespace DotNetElements.Wpf.Markdown;
 [TemplatePart(Name = MarkdownContainerName, Type = typeof(Grid))]
 public partial class MarkdownTextBlock : Control
 {
-	private static readonly DependencyProperty ConfigProperty = DependencyProperty.Register(
-		nameof(Config),
-		typeof(MarkdownConfig),
-		typeof(MarkdownTextBlock),
-		new PropertyMetadata(null, OnConfigChanged)
-	);
+    private static readonly DependencyProperty ConfigProperty = DependencyProperty.Register(
+        nameof(Config),
+        typeof(MarkdownConfig),
+        typeof(MarkdownTextBlock),
+        new PropertyMetadata(null, OnConfigChanged)
+    );
 
-	private static void OnConfigChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-	{
-		if (d is MarkdownTextBlock self && e.NewValue is not null)
-			self.ApplyConfig(self.Config);
-	}
+    private static void OnConfigChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is MarkdownTextBlock self && e.NewValue is not null)
+            self.ApplyConfig(self.Config);
+    }
 
-	public MarkdownConfig Config
-	{
-		get => (MarkdownConfig)GetValue(ConfigProperty);
-		set => SetValue(ConfigProperty, value);
-	}
+    public MarkdownConfig Config
+    {
+        get => (MarkdownConfig)GetValue(ConfigProperty);
+        set => SetValue(ConfigProperty, value);
+    }
 
-	private static readonly DependencyProperty TextProperty = DependencyProperty.Register(
-		nameof(Text),
-		typeof(string),
-		typeof(MarkdownTextBlock),
-		new PropertyMetadata(null, OnTextChanged));
+    private static readonly DependencyProperty TextProperty = DependencyProperty.Register(
+        nameof(Text),
+        typeof(string),
+        typeof(MarkdownTextBlock),
+        new PropertyMetadata(null, OnTextChanged));
 
-	private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-	{
-		if (d is MarkdownTextBlock self && e.NewValue is not null)
-			self.ApplyText(true);
-	}
+    private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is not MarkdownTextBlock self)
+            throw new InvalidOperationException();
 
-	public string Text
-	{
-		get => (string)GetValue(TextProperty);
-		set => SetValue(TextProperty, value);
-	}
+        if (e.NewValue is not null)
+            self.ApplyText(true);
+        else
+            self.ClearText();
+    }
 
-	private static readonly DependencyProperty MarkdownDocumentProperty = DependencyProperty.Register(
-		nameof(MarkdownDocument),
-		typeof(MarkdownDocument),
-		typeof(MarkdownTextBlock),
-		new PropertyMetadata(null));
+    public string Text
+    {
+        get => (string)GetValue(TextProperty);
+        set => SetValue(TextProperty, value);
+    }
 
-	public MarkdownDocument? MarkdownDocument
-	{
-		get => (MarkdownDocument)GetValue(MarkdownDocumentProperty);
-		private set => SetValue(MarkdownDocumentProperty, value);
-	}
+    private static readonly DependencyProperty MarkdownDocumentProperty = DependencyProperty.Register(
+        nameof(MarkdownDocument),
+        typeof(MarkdownDocument),
+        typeof(MarkdownTextBlock),
+        new PropertyMetadata(null));
 
-	public event EventHandler<LinkClickedEventArgs>? OnLinkClicked;
+    public MarkdownDocument? MarkdownDocument
+    {
+        get => (MarkdownDocument)GetValue(MarkdownDocumentProperty);
+        private set => SetValue(MarkdownDocumentProperty, value);
+    }
 
-	internal void RaiseLinkClickedEvent(Uri uri) => OnLinkClicked?.Invoke(this, new LinkClickedEventArgs(uri));
+    public event EventHandler<LinkClickedEventArgs>? OnLinkClicked;
 
-	private const string MarkdownContainerName = "MarkdownContainer";
+    internal void RaiseLinkClickedEvent(Uri uri) => OnLinkClicked?.Invoke(this, new LinkClickedEventArgs(uri));
 
-	private FlowDocumentScrollViewer? container;
-	private MarkdownPipeline pipeline;
-	private MdFlowDocument document;
-	private DocumentMarkdownWriter? renderer;
+    private const string MarkdownContainerName = "MarkdownContainer";
 
-	static MarkdownTextBlock()
-	{
-		DefaultStyleKeyProperty.OverrideMetadata(typeof(MarkdownTextBlock), new FrameworkPropertyMetadata(typeof(MarkdownTextBlock)));
-	}
+    private FlowDocumentScrollViewer? container;
+    private MarkdownPipeline pipeline;
+    private MdFlowDocument document;
+    private DocumentMarkdownWriter? renderer;
 
-	public MarkdownTextBlock()
-	{
-		document = new MdFlowDocument();
-		pipeline = new MarkdownPipelineBuilder()
-			.UseEmphasisExtras()
-			//.UseAutoLinks()
-			//.UseTaskLists()
-			//.UsePipeTables()
-			.Build();
-	}
+    static MarkdownTextBlock()
+    {
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(MarkdownTextBlock), new FrameworkPropertyMetadata(typeof(MarkdownTextBlock)));
+    }
 
-	public override void OnApplyTemplate()
-	{
-		base.OnApplyTemplate();
+    public MarkdownTextBlock()
+    {
+        document = new MdFlowDocument();
+        pipeline = new MarkdownPipelineBuilder()
+            .UseEmphasisExtras()
+            //.UseAutoLinks()
+            //.UseTaskLists()
+            //.UsePipeTables()
+            .Build();
+    }
 
-		container = (FlowDocumentScrollViewer)GetTemplateChild(MarkdownContainerName);
-		ArgumentNullException.ThrowIfNull(container);
-		container.Document = document.Document;
+    public override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
 
-		Build();
-	}
+        container = (FlowDocumentScrollViewer)GetTemplateChild(MarkdownContainerName);
+        ArgumentNullException.ThrowIfNull(container);
+        container.Document = document.Document;
 
-	private void ApplyConfig(MarkdownConfig config)
-	{
-		if (renderer is null)
-			return;
+        Build();
+    }
 
-		renderer.Config = config;
-	}
+    private void ApplyConfig(MarkdownConfig config)
+    {
+        if (renderer is null)
+            return;
 
-	private void ApplyText(bool rerender)
-	{
-		if (renderer is null)
-			return;
+        renderer.Config = config;
+    }
 
-		if (rerender)
-			renderer.ReloadDocument();
+    private void ApplyText(bool rerender)
+    {
+        if (renderer is null)
+            return;
 
-		if (!string.IsNullOrEmpty(Text))
-		{
-			MarkdownDocument = Markdig.Markdown.Parse(Text, pipeline);
-			renderer.Render(MarkdownDocument);
-		}
-	}
+        if (rerender)
+            renderer.ReloadDocument();
 
-	private void Build()
-	{
-		renderer ??= new DocumentMarkdownWriter(document, this, Config);
-		document.Document.FontFamily = this.FontFamily; // todo check if we want this in config
+        if (!string.IsNullOrEmpty(Text))
+        {
+            MarkdownDocument = Markdig.Markdown.Parse(Text, pipeline);
+            renderer.Render(MarkdownDocument);
+        }
+    }
 
-		pipeline.Setup(renderer);
+    private void ClearText()
+    {
+        if (renderer is null)
+            return;
 
-		ApplyText(false);
-	}
+        renderer.ClearDocument();
+    }
+
+    private void Build()
+    {
+        renderer ??= new DocumentMarkdownWriter(document, this, Config);
+        document.Document.FontFamily = this.FontFamily; // todo check if we want this in config
+
+        pipeline.Setup(renderer);
+
+        ApplyText(false);
+    }
 }
