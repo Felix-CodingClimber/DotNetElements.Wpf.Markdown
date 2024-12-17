@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageId>DotNetElements.Wpf.Markdown</PackageId>
+		<Version>0.1.0</Version>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Markdig" Version="0.38.0" />
+	</ItemGroup>
+
+</Project>
