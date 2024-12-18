@@ -66,6 +66,7 @@ public sealed class MarkdownThemes : DependencyObject
     public Brush QuoteBackground { get; set; } = new SolidColorBrush(Colors.LightGray);
     public Brush QuoteForeground { get; set; } = new SolidColorBrush(Colors.Black);
     public Thickness QuotePadding { get; set; } = new(left: 5, top: 3, right: 5, bottom: 3);
+    public Thickness QuoteMargin { get; set; } = new(0);
     public Brush QuoteBorderBrush { get; set; } = new SolidColorBrush(Colors.Gray);
     public Thickness QuoteBorderThickness { get; set; } = new(left: 5, top: 0, right: 0, bottom: 0);
 }

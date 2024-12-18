@@ -1,4 +1,5 @@
-﻿using System.Windows.Documents;
+﻿using System.Windows;
+using System.Windows.Documents;
 using Markdig.Syntax;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
@@ -6,6 +7,7 @@ namespace DotNetElements.Wpf.Markdown.TextElements;
 internal sealed class MdQuote : IAddChild
 {
     public TextElement TextElement => section;
+    public Section Section => section;
 
     private readonly Section section;
 
@@ -18,6 +20,7 @@ internal sealed class MdQuote : IAddChild
         section.Background = config.Themes.QuoteBackground;
         section.Foreground = config.Themes.QuoteForeground;
         section.Padding = config.Themes.QuotePadding;
+        section.Margin = config.Themes.QuoteMargin;
     }
 
     // todo fix top and bottom margin/ padding (caused by paragraph margin)
