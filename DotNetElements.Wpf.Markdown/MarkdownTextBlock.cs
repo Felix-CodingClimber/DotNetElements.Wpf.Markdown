@@ -86,7 +86,7 @@ public partial class MarkdownTextBlock : Control
             .UseEmphasisExtras()
             //.UseAutoLinks()
             .UseTaskLists() // todo check if feature is enabled in config >>> need to reset the pipeline if the config changes
-            //.UsePipeTables()
+            .UsePipeTables() // todo check if feature is enabled in config >>> need to reset the pipeline if the config changes
             .Build();
     }
 

@@ -23,8 +23,6 @@ internal sealed class MdQuote : IAddChild
         section.Margin = config.Themes.QuoteMargin;
     }
 
-    // todo fix top and bottom margin/ padding (caused by paragraph margin)
-    // todo fix multiline quote rendered in a single line!
     public void AddChild(IAddChild child)
     {
         TextElement? element = child.TextElement;

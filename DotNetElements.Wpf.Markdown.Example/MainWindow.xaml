@@ -35,7 +35,9 @@
             Grid.Column="0"
             AcceptsReturn="True"
             AcceptsTab="True"
-            Background="White" />
+            Background="White"
+            FontFamily="Consolas"
+            FontSize="12" />
         <markdown:MarkdownTextBlock
             x:Name="MarkdownTextBlock"
             Grid.Row="1"

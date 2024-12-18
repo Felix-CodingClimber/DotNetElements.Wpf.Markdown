@@ -177,9 +177,10 @@ internal class DocumentMarkdownWriter : RendererBase
         //ObjectRenderers.Add(new ContainerInlineRenderer());
 
         // Extension renderers
-        //ObjectRenderers.Add(new TableRenderer());
+        if (Config.FeatureTablesSupported)
+            ObjectRenderers.Add(new TableRenderer());
 
-        if (Config.FeatureTaksListSupported)
+        if (Config.FeatureTaskListSupported)
             ObjectRenderers.Add(new TaskListRenderer());
 
         //ObjectRenderers.Add(new HtmlInlineRenderer());

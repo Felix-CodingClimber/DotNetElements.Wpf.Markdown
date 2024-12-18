@@ -12,13 +12,19 @@ internal sealed class MdImage : IAddChild
 
     private static readonly DefaultImageProvider defaultImageProvider = new();
 
+    private readonly string url;
+    private readonly MarkdownConfig config;
+
     public MdImage(string url, MarkdownConfig config)
     {
         ArgumentNullException.ThrowIfNull(url);
 
+        this.url = url;
+        this.config = config;
+
         container = new InlineUIContainer();
 
-        Image image = new Image();
+        Image image = new();
         image.HorizontalAlignment = HorizontalAlignment.Left;
 
         // Feature: Custom defined image width and height in the format ![Image](img/exampleImg.png=100x100)
@@ -33,7 +39,7 @@ internal sealed class MdImage : IAddChild
 
             if (dimensions.Length == 2)
             {
-                url = urlParts[0];
+                this.url = urlParts[0];
 
                 if (dimensions[0].Length > 0)
                     image.Width = int.Parse(dimensions[0]);
@@ -52,19 +58,21 @@ internal sealed class MdImage : IAddChild
             image.MaxHeight = config.Themes.ImageMaxHeight;
         }
 
-        image.Loaded += async (sender, e) =>
-        {
-            IImageProvider imageProviderToUse = defaultImageProvider;
-
-            if (config.ImageProvider is not null && config.ImageProvider.ShouldUseThisProvider(url))
-                imageProviderToUse = config.ImageProvider;
-
-            ((Image)sender).Source = await imageProviderToUse.GetImageAsync(url, config);
-        };
+        image.Loaded += LoadImageAsync;
 
         container.Child = image;
     }
 
     // Not used here
     public void AddChild(IAddChild child) => throw new InvalidOperationException();
+
+    private async void LoadImageAsync(object sender, RoutedEventArgs e)
+    {
+        IImageProvider imageProviderToUse = defaultImageProvider;
+
+        if (config.ImageProvider is not null && config.ImageProvider.ShouldUseThisProvider(url))
+            imageProviderToUse = config.ImageProvider;
+
+        ((Image)sender).Source = await imageProviderToUse.GetImageAsync(url, config);
+    }
 }

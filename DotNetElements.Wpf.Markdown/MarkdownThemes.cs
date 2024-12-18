@@ -14,7 +14,7 @@ public sealed class MarkdownThemes : DependencyObject
     public Thickness ParagraphMargin { get; set; } = new(left: 0, top: 0, right: 0, bottom: 20);
 
     // Emphasis
-    public Brush HighlightBrush { get; set; } = SystemColors.HighlightBrush;
+    public Brush HighlightBrush { get; set; } = new SolidColorBrush(Colors.LightBlue);
 
     // List
     public Thickness ListMargin { get; set; } = new(left: 5, top: 5, right: 5, bottom: 5);
@@ -76,4 +76,14 @@ public sealed class MarkdownThemes : DependencyObject
     // Image
     public int ImageMaxWidth { get; set; } = 400;
     public int ImageMaxHeight { get; set; } = 400;
+
+    // Extensions
+
+    // Table
+    public Brush TableBackground { get; set; } = new SolidColorBrush(Colors.Transparent);
+    public Brush TableHeaderBackground { get; set; } = new SolidColorBrush(Colors.LightBlue);
+    public Brush TableBorderBrush { get; set; } = new SolidColorBrush(Colors.Gray);
+    public double TableBorderThickness { get; set; } = 1;
+    public Thickness TableCellPadding { get; set; } = new(left: 5, top: 3, right: 5, bottom: 3);
+
 }

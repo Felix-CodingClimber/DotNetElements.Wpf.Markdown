@@ -118,5 +118,21 @@ This is a task list
 - [ ] item 1
 - [ ] item 2
 - [x] item 3 checked
+
+---
+
+This is a table
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1    | Row 1    | Row 1    |
+| Row 2    | Row 2    | Row 2    |
+
+This is a table with defined text alignment
+
+| Header 1 (default) | Header 2 (center) | Header 3 (right) |
+|--------------------|:-----------------:|-----------------:|
+| Row 1              | Row 1             | Row 1            |
+| Row 2              | Row 2             | Row 2            |
 """;
 }
