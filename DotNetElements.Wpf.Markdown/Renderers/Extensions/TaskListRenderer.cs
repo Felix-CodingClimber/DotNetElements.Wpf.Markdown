@@ -1,7 +1,7 @@
 ﻿using DotNetElements.Wpf.Markdown.TextElements;
 using Markdig.Extensions.TaskLists;
 
-namespace DotNetElements.Wpf.Markdown.Renderers;
+namespace DotNetElements.Wpf.Markdown.Renderers.Extensions;
 
 internal sealed class TaskListRenderer : DocumentRenderer<TaskList>
 {

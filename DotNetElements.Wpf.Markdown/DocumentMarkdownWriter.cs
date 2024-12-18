@@ -1,4 +1,5 @@
 ﻿using DotNetElements.Wpf.Markdown.Renderers;
+using DotNetElements.Wpf.Markdown.Renderers.Extensions;
 using DotNetElements.Wpf.Markdown.Renderers.Inlines;
 using DotNetElements.Wpf.Markdown.TextElements;
 using Markdig.Helpers;
@@ -156,6 +157,20 @@ internal class DocumentMarkdownWriter : RendererBase
 
     protected virtual void LoadRenderers()
     {
+        // Extension renderers
+        // They need to be registered first as some of the extension blocks inherit from default blocks
+        // To make sure the extension renderer is picked up we register it first
+        if (Config.FeatureTablesSupported)
+            ObjectRenderers.Add(new TableRenderer());
+
+        if (Config.FeatureTaskListSupported)
+            ObjectRenderers.Add(new TaskListRenderer());
+
+        if (Config.FeatureAlertBlocksSupported)
+            ObjectRenderers.Add(new AlertBlockRenderer());
+
+        //ObjectRenderers.Add(new HtmlInlineRenderer());
+
         // Default block renderers
         ObjectRenderers.Add(new CodeBlockRenderer());
         ObjectRenderers.Add(new ListRenderer());
@@ -175,14 +190,5 @@ internal class DocumentMarkdownWriter : RendererBase
         ObjectRenderers.Add(new LinkInlineRenderer());
         ObjectRenderers.Add(new LiteralInlineRenderer());
         //ObjectRenderers.Add(new ContainerInlineRenderer());
-
-        // Extension renderers
-        if (Config.FeatureTablesSupported)
-            ObjectRenderers.Add(new TableRenderer());
-
-        if (Config.FeatureTaskListSupported)
-            ObjectRenderers.Add(new TaskListRenderer());
-
-        //ObjectRenderers.Add(new HtmlInlineRenderer());
     }
 }

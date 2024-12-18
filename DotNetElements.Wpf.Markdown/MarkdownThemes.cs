@@ -48,7 +48,7 @@ public sealed class MarkdownThemes : DependencyObject
     public Brush InlineCodeBackground { get; set; } = new SolidColorBrush(Colors.LightGray);
     public Brush InlineCodeForeground { get; set; } = new SolidColorBrush(Colors.Black);
     public Thickness InlineCodePadding { get; set; } = new(left: 3, top: 1, right: 3, bottom: 1);
-    public double InlineCodeFontSize { get; set; } = 10;
+    public double InlineCodeFontSize { get; set; } = 12;
     public FontWeight InlineCodeFontWeight { get; set; } = FontWeights.Normal;
 
     // Code block
@@ -57,7 +57,7 @@ public sealed class MarkdownThemes : DependencyObject
     public Brush CodeBlockBorderBrush { get; set; } = new SolidColorBrush(Colors.Gray);
     public Thickness CodeBlockBorderThickness { get; set; } = new(1);
     public Thickness CodeBlockPadding { get; set; } = new(left: 5, top: 3, right: 5, bottom: 3);
-    public double CodeBlockFontSize { get; set; } = 10;
+    public double CodeBlockFontSize { get; set; } = 12;
     public FontWeight CodeBlockFontWeight { get; set; } = FontWeights.Normal;
 
     // Thematic break
@@ -74,8 +74,8 @@ public sealed class MarkdownThemes : DependencyObject
     public Thickness QuoteBorderThickness { get; set; } = new(left: 5, top: 0, right: 0, bottom: 0);
 
     // Image
-    public int ImageMaxWidth { get; set; } = 400;
-    public int ImageMaxHeight { get; set; } = 400;
+    public double ImageMaxWidth { get; set; } = 400;
+    public double ImageMaxHeight { get; set; } = 400;
 
     // Extensions
 
@@ -86,4 +86,18 @@ public sealed class MarkdownThemes : DependencyObject
     public double TableBorderThickness { get; set; } = 1;
     public Thickness TableCellPadding { get; set; } = new(left: 5, top: 3, right: 5, bottom: 3);
 
+    // Alert blocks
+    public Thickness AlertMargin { get; set; } = new(left: 0, top: 0, right: 0, bottom: 20);
+    public Thickness AlertPadding { get; set; } = new(left: 5, top: 3, right: 5, bottom: 3);
+    public Brush AlertBackground { get; set; } = new SolidColorBrush(Colors.LightGray);
+    public Brush AlertForeground { get; set; } = new SolidColorBrush(Colors.Black);
+    public Brush AlertNoteAccent { get; set; } = new SolidColorBrush(Colors.CornflowerBlue);
+    public Brush AlertTipAccent { get; set; } = new SolidColorBrush(Colors.ForestGreen);
+    public Brush AlertImportantAccent { get; set; } = new SolidColorBrush(Colors.Purple);
+    public Brush AlertWarningAccent { get; set; } = new SolidColorBrush(Color.FromArgb(255, 252, 219, 3));
+    public Brush AlertCautionAccent { get; set; } = new SolidColorBrush(Colors.Red);
+    public Thickness AlertBorderThickness { get; set; } = new(left: 5, top: 0, right: 0, bottom: 0);
+    public double AlertHeaderSpacing { get; set; } = 10;
+    public double AlertHeaderFontSize { get; set; } = 14;
+    public double AlertFontSize { get; set; } = 12;
 }

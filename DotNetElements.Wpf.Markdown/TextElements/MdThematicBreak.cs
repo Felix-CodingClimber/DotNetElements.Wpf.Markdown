@@ -23,6 +23,7 @@ internal sealed class MdThematicBreak : IAddChild
             StrokeThickness = config.Themes.ThematicBreakLineThickness,
             Margin = config.Themes.ThematicBreakMargin
         };
+
         inlineUIContainer.Child = line;
         paragraph.Inlines.Add(inlineUIContainer);
     }

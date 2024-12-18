@@ -11,7 +11,7 @@ internal sealed class QuoteBlockRenderer : DocumentRenderer<QuoteBlock>
         ArgumentNullException.ThrowIfNull(renderer);
         ArgumentNullException.ThrowIfNull(obj);
 
-        MdQuote quote = new(obj, renderer.Config);
+        MdQuote quote = new(renderer.Config);
 
         renderer.Push(quote);
         renderer.WriteChildren(obj);
@@ -24,7 +24,7 @@ internal sealed class QuoteBlockRenderer : DocumentRenderer<QuoteBlock>
         }
         else
         {
-            Thickness lastMargin = quote.Section.Blocks.FirstBlock.Margin;
+            Thickness lastMargin = quote.Section.Blocks.LastBlock.Margin;
             quote.Section.Blocks.FirstBlock.Margin = new Thickness(firstMargin.Left, 0, firstMargin.Right, firstMargin.Bottom);
             quote.Section.Blocks.LastBlock.Margin = new Thickness(lastMargin.Left, lastMargin.Top, lastMargin.Right, 0);
         }

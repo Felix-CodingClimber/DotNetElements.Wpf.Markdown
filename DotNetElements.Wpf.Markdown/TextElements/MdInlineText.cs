@@ -5,6 +5,7 @@ namespace DotNetElements.Wpf.Markdown.TextElements;
 internal sealed class MdInlineText : IAddChild
 {
 	public TextElement TextElement => run;
+	public Run Run => run;
 
 	private readonly Run run;
 

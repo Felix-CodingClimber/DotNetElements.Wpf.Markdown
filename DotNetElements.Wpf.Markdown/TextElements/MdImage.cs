@@ -24,8 +24,10 @@ internal sealed class MdImage : IAddChild
 
         container = new InlineUIContainer();
 
-        Image image = new();
-        image.HorizontalAlignment = HorizontalAlignment.Left;
+        Image image = new()
+        {
+            HorizontalAlignment = HorizontalAlignment.Left
+        };
 
         // Feature: Custom defined image width and height in the format ![Image](img/exampleImg.png=100x100)
         // The height or width can be omitted, but the x is required

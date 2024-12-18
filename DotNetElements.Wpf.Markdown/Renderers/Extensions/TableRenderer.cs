@@ -2,7 +2,7 @@
 using DotNetElements.Wpf.Markdown.TextElements;
 using Markdig.Extensions.Tables;
 
-namespace DotNetElements.Wpf.Markdown.Renderers;
+namespace DotNetElements.Wpf.Markdown.Renderers.Extensions;
 
 internal sealed class TableRenderer : DocumentRenderer<Table>
 {

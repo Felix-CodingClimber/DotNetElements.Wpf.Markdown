@@ -4,7 +4,6 @@ namespace DotNetElements.Wpf.Markdown.TextElements;
 
 internal sealed class MdFlowDocument : IAddChild
 {
-	// Not used here (Check if  { get; set; } = new Run(); is needed)
 	public TextElement TextElement => throw new InvalidOperationException();
 
 	public FlowDocument Document { get; private set; } = new FlowDocument();

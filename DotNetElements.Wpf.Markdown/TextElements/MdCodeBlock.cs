@@ -12,15 +12,16 @@ internal sealed class MdCodeBlock : IAddChild
 
     public MdCodeBlock(CodeBlock codeBlock, MarkdownConfig config)
     {
-        paragraph = new Paragraph();
-
-        paragraph.Background = config.Themes.CodeBlockBackground;
-        paragraph.Foreground = config.Themes.CodeBlockForeground;
-        paragraph.FontSize = config.Themes.CodeBlockFontSize;
-        paragraph.FontWeight = config.Themes.CodeBlockFontWeight;
-        paragraph.Padding = config.Themes.CodeBlockPadding;
-        paragraph.BorderBrush = config.Themes.CodeBlockBorderBrush;
-        paragraph.BorderThickness = config.Themes.CodeBlockBorderThickness;
+        paragraph = new Paragraph
+        {
+            Background = config.Themes.CodeBlockBackground,
+            Foreground = config.Themes.CodeBlockForeground,
+            FontSize = config.Themes.CodeBlockFontSize,
+            FontWeight = config.Themes.CodeBlockFontWeight,
+            Padding = config.Themes.CodeBlockPadding,
+            BorderBrush = config.Themes.CodeBlockBorderBrush,
+            BorderThickness = config.Themes.CodeBlockBorderThickness
+        };
 
         foreach (StringLine line in codeBlock.Lines.Lines)
         {

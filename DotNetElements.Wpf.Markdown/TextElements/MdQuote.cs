@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Documents;
-using Markdig.Syntax;
+﻿using System.Windows.Documents;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
@@ -11,16 +9,17 @@ internal sealed class MdQuote : IAddChild
 
     private readonly Section section;
 
-    public MdQuote(QuoteBlock quoteBlock, MarkdownConfig config)
+    public MdQuote(MarkdownConfig config)
     {
-        section = new Section();
-
-        section.BorderBrush = config.Themes.QuoteBorderBrush;
-        section.BorderThickness = config.Themes.QuoteBorderThickness;
-        section.Background = config.Themes.QuoteBackground;
-        section.Foreground = config.Themes.QuoteForeground;
-        section.Padding = config.Themes.QuotePadding;
-        section.Margin = config.Themes.QuoteMargin;
+        section = new Section
+        {
+            BorderBrush = config.Themes.QuoteBorderBrush,
+            BorderThickness = config.Themes.QuoteBorderThickness,
+            Background = config.Themes.QuoteBackground,
+            Foreground = config.Themes.QuoteForeground,
+            Padding = config.Themes.QuotePadding,
+            Margin = config.Themes.QuoteMargin
+        };
     }
 
     public void AddChild(IAddChild child)
@@ -30,11 +29,11 @@ internal sealed class MdQuote : IAddChild
         if (element is null)
             return;
 
-        if (element is System.Windows.Documents.Block block)
+        if (element is Block block)
         {
             section.Blocks.Add(block);
         }
-        else if (element is System.Windows.Documents.Inline inline)
+        else if (element is Inline inline)
         {
             Paragraph paragraph = new();
             paragraph.Inlines.Add(inline);

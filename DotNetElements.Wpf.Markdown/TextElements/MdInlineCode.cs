@@ -11,12 +11,13 @@ internal sealed class MdInlineCode : IAddChild
 
 	public MdInlineCode(CodeInline codeInline, MarkdownConfig config)
 	{
-		run = new Run(codeInline.Content.ToString());
-
-        run.Background = config.Themes.InlineCodeBackground;
-        run.Foreground = config.Themes.InlineCodeForeground;
-        run.FontSize = config.Themes.InlineCodeFontSize;
-        run.FontWeight = config.Themes.InlineCodeFontWeight;
+        run = new Run(codeInline.Content)
+        {
+            Background = config.Themes.InlineCodeBackground,
+            Foreground = config.Themes.InlineCodeForeground,
+            FontSize = config.Themes.InlineCodeFontSize,
+            FontWeight = config.Themes.InlineCodeFontWeight
+        };
         //run.Padding = config.Themes.InlineCodePadding; // todo not working
     }
 

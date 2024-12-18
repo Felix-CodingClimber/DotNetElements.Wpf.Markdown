@@ -24,7 +24,7 @@ internal sealed class MdEmphasisInline : IAddChild
         {
             if (child is MdInlineText inlineText)
             {
-                span.Inlines.Add((Run)inlineText.TextElement);
+                span.Inlines.Add(inlineText.Run);
             }
             else if (child is MdEmphasisInline emphasisInline)
             {

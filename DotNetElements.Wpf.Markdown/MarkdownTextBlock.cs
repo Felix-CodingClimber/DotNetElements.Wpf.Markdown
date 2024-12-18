@@ -87,6 +87,7 @@ public partial class MarkdownTextBlock : Control
             //.UseAutoLinks()
             .UseTaskLists() // todo check if feature is enabled in config >>> need to reset the pipeline if the config changes
             .UsePipeTables() // todo check if feature is enabled in config >>> need to reset the pipeline if the config changes
+            .UseAlertBlocks() // todo check if feature is enabled in config >>> need to reset the pipeline if the config changes
             .Build();
     }
 
