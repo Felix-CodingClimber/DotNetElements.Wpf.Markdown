@@ -34,7 +34,7 @@ jobs:
         dotnet-version: 9.0.x
         
     # Create the NuGet package in the folder from the environment variable NuGetDirectory
-    - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }} /p:Version=${{ env.VERSION }} /p:PackageVersion=${{ env.VERSION }}
+    - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }} /p:Version=${{ env.VERSION }} /p:PackageVersion=${{ env.VERSION }} /p:EnableWindowsTargeting=true
 
     # Publish the NuGet package as an artifact, so they can be used in the following jobs
     - name: uploadArtifacts
