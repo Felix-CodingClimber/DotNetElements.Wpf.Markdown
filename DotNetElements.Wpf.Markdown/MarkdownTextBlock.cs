@@ -136,6 +136,7 @@ public partial class MarkdownTextBlock : Control
     {
         renderer ??= new DocumentMarkdownWriter(document, this, Config);
         document.Document.FontFamily = this.FontFamily; // todo check if we want this in config
+        document.Document.Background = this.Background; // todo check if we want this in config
 
         pipeline.Setup(renderer);
 

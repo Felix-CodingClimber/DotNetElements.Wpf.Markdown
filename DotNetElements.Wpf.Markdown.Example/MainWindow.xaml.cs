@@ -8,13 +8,18 @@ public partial class MainWindow : Window
 	{
 		InitializeComponent();
 
-		MarkdownTextBlock.Text = ExampleMarkdown;
+        MarkdownInput.Text = ExampleMarkdown;
         MarkdownTextBlock.OnLinkClicked += MarkdownTextBlock_OnLinkClicked;
 	}
 
     private void MarkdownTextBlock_OnLinkClicked(object? sender, LinkClickedEventArgs e)
     {
         System.Diagnostics.Debug.WriteLine($"Clicked link {e.Uri}"); // todo debug
+    }
+
+    private void OnRefreshButton_Click(object sender, RoutedEventArgs e)
+    {
+        MarkdownTextBlock.Text = MarkdownInput.Text;
     }
 
     private const string ExampleMarkdown =
@@ -40,6 +45,8 @@ This is a ++Underline++ inline text
 This is a ==Marked== inline text
 
 This is a inline `code` element
+
+This is a [Link](http://a.com)
 
 ---
 
@@ -73,6 +80,16 @@ This is a nested ordered list:
 
 ---
 
-This is a [Link](http://a.com)
+This is a code block:
+```cs
+public class Test
+{
+    public void TestMethod()
+    {
+        Console.WriteLine("Hello World");
+    }
+}
+```
+
 """;
 }

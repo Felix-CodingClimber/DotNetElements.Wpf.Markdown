@@ -157,8 +157,8 @@ internal class DocumentMarkdownWriter : RendererBase
 	protected virtual void LoadRenderers()
 	{
 		// Default block renderers
-		//ObjectRenderers.Add(new CodeBlockRenderer());
-		ObjectRenderers.Add(new ListRenderer());
+		ObjectRenderers.Add(new CodeBlockRenderer());
+        ObjectRenderers.Add(new ListRenderer());
         ObjectRenderers.Add(new HeadingRenderer());
 		ObjectRenderers.Add(new ParagraphRenderer());
 		//ObjectRenderers.Add(new QuoteBlockRenderer());

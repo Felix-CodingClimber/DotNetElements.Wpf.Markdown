@@ -6,11 +6,51 @@
     xmlns:local="clr-namespace:DotNetElements.Wpf.Markdown.Example"
     xmlns:markdown="clr-namespace:DotNetElements.Wpf.Markdown;assembly=DotNetElements.Wpf.Markdown"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
-    Width="800"
-    Height="450"
+    Title="DotNetElements.Wpf.Markdown Example Application"
+    Width="1200"
+    Height="800"
+    Background="LightBlue"
     mc:Ignorable="d">
-    <Grid>
-        <markdown:MarkdownTextBlock x:Name="MarkdownTextBlock" FontFamily="Segoe UI" />
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.Column="0">
+            <TextBlock FontSize="14" Text="Markdown" />
+        </Border>
+        <Border Grid.Row="0" Grid.Column="2">
+            <TextBlock FontSize="14" Text="Rendered XAML" />
+        </Border>
+
+        <TextBox
+            x:Name="MarkdownInput"
+            Grid.Row="1"
+            Grid.Column="0"
+            AcceptsReturn="True"
+            AcceptsTab="True"
+            Background="White" />
+        <markdown:MarkdownTextBlock
+            x:Name="MarkdownTextBlock"
+            Grid.Row="1"
+            Grid.Column="2"
+            Background="White"
+            FontFamily="Segoe UI" />
+
+        <Border
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="0,10,0,0">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Click="OnRefreshButton_Click" Content="Refresh" />
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
