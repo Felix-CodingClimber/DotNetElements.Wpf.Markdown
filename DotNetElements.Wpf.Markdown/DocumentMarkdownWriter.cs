@@ -161,8 +161,8 @@ internal class DocumentMarkdownWriter : RendererBase
         ObjectRenderers.Add(new ListRenderer());
         ObjectRenderers.Add(new HeadingRenderer());
 		ObjectRenderers.Add(new ParagraphRenderer());
-		//ObjectRenderers.Add(new QuoteBlockRenderer());
-		ObjectRenderers.Add(new ThematicBreakRenderer());
+		ObjectRenderers.Add(new QuoteBlockRenderer());
+        ObjectRenderers.Add(new ThematicBreakRenderer());
         //ObjectRenderers.Add(new HtmlBlockRenderer());
 
         // Default inline renderers

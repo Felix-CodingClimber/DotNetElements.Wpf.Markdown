@@ -14,10 +14,13 @@ internal sealed class MdCodeBlock : IAddChild
     {
         paragraph = new Paragraph();
 
-        paragraph.Background = config.Themes.InlineCodeBackground;
-        paragraph.Foreground = config.Themes.InlineCodeForeground;
-        paragraph.FontSize = config.Themes.InlineCodeFontSize;
-        paragraph.FontWeight = config.Themes.InlineCodeFontWeight;
+        paragraph.Background = config.Themes.CodeBlockBackground;
+        paragraph.Foreground = config.Themes.CodeBlockForeground;
+        paragraph.FontSize = config.Themes.CodeBlockFontSize;
+        paragraph.FontWeight = config.Themes.CodeBlockFontWeight;
+        paragraph.Padding = config.Themes.CodeBlockPadding;
+        paragraph.BorderBrush = config.Themes.CodeBlockBorderBrush;
+        paragraph.BorderThickness = config.Themes.CodeBlockBorderThickness;
 
         foreach (StringLine line in codeBlock.Lines.Lines)
         {

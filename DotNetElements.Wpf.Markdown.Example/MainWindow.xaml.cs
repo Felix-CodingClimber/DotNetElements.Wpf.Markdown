@@ -91,5 +91,13 @@ public class Test
 }
 ```
 
+---
+
+> This is a quote
+
+This is a quote with two lines
+
+> First line
+> Second line
 """;
 }

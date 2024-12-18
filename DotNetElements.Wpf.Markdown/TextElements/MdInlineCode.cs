@@ -17,6 +17,7 @@ internal sealed class MdInlineCode : IAddChild
         run.Foreground = config.Themes.InlineCodeForeground;
         run.FontSize = config.Themes.InlineCodeFontSize;
         run.FontWeight = config.Themes.InlineCodeFontWeight;
+        //run.Padding = config.Themes.InlineCodePadding; // todo not working
     }
 
     // Not used here
