@@ -9,7 +9,7 @@ internal sealed class DefaultImageProvider : IImageProvider
 {
     public async Task<BitmapSource> GetImageAsync(string url, MarkdownConfig config)
     {
-        using var stream = new MemoryStream(await File.ReadAllBytesAsync(url));
+        using MemoryStream stream = new(await File.ReadAllBytesAsync(url));
         using Bitmap bitmap = new Bitmap(stream);
 
         BitmapSource imageSource = BitmapToBitmapSource(bitmap);
