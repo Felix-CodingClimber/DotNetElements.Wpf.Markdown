@@ -10,14 +10,17 @@ public sealed class MarkdownThemes : DependencyObject
     public Thickness Padding { get; set; } = new(8);
     public Thickness InternalMargin { get; set; } = new(4);
 
-    // Paragraphs
+    // Paragraph
     public Thickness ParagraphMargin { get; set; } = new(left: 0, top: 0, right: 0, bottom: 20);
 
-    // Lists
+    // Emphasis
+    public Brush HighlightBrush { get; set; } = SystemColors.HighlightBrush;
+
+    // List
     public Thickness ListMargin { get; set; } = new(left: 5, top: 5, right: 5, bottom: 5);
     public Thickness ListItemParagraphMargin { get; set; } = new(left: 0, top: 0, right: 0, bottom: 5);
 
-    // Headers
+    // Header
     public double H1FontSize { get; set; } = 22;
     public double H2FontSize { get; set; } = 20;
     public double H3FontSize { get; set; } = 18;
@@ -69,4 +72,8 @@ public sealed class MarkdownThemes : DependencyObject
     public Thickness QuoteMargin { get; set; } = new(0);
     public Brush QuoteBorderBrush { get; set; } = new SolidColorBrush(Colors.Gray);
     public Thickness QuoteBorderThickness { get; set; } = new(left: 5, top: 0, right: 0, bottom: 0);
+
+    // Image
+    public int ImageMaxWidth { get; set; } = 400;
+    public int ImageMaxHeight { get; set; } = 400;
 }

@@ -7,6 +7,12 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
+	
+	<ItemGroup>
+		<Content Include="img\exampleImg1.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\DotNetElements.Wpf.Markdown\DotNetElements.Wpf.Markdown.csproj" />

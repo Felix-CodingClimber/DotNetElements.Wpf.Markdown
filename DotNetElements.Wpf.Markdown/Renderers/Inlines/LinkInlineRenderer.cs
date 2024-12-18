@@ -11,19 +11,15 @@ internal sealed class LinkInlineRenderer : DocumentRenderer<LinkInline>
         ArgumentNullException.ThrowIfNull(renderer);
         ArgumentNullException.ThrowIfNull(obj);
 
-        var url = obj.GetDynamicUrl is not null ? obj.GetDynamicUrl() ?? obj.Url : obj.Url;
+        string? url = obj.GetDynamicUrl is not null ? obj.GetDynamicUrl() ?? obj.Url : obj.Url;
 
         if (!Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
-        {
-            url = "#";
-        }
-        
+            url = "#"; // todo log warning
+
         if (obj.IsImage)
         {
-            // todo should not be needed... images should be handled by the image renderer
-
-            //var image = new MyImage(link, CommunityToolkit.Labs.WinUI.MarkdownTextBlock.Extensions.GetUri(url, renderer.Config.BaseUrl), renderer.Config);
-            //renderer.WriteInline(image);
+            MdImage image = new(url, renderer.Config);
+            renderer.WriteInline(image);
         }
         else
         {

@@ -13,7 +13,7 @@ internal sealed class MdListItem : IAddChild
     {
         listItem = new ListItem()
         {
-            Margin = config.Themes.ListItemParagraphMargin
+            Margin = config.Themes.ListItemParagraphMargin,
         };
     }
 

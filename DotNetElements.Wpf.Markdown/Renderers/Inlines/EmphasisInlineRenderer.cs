@@ -54,7 +54,7 @@ internal sealed class EmphasisInlineRenderer : DocumentRenderer<EmphasisInline>
             case '=':
             {
                 span = new MdEmphasisInline();
-                span.SetMarked();
+                span.SetMarked(renderer.Config.Themes);
                 break;
             }
         }

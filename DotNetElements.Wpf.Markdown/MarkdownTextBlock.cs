@@ -85,7 +85,7 @@ public partial class MarkdownTextBlock : Control
         pipeline = new MarkdownPipelineBuilder()
             .UseEmphasisExtras()
             //.UseAutoLinks()
-            //.UseTaskLists()
+            .UseTaskLists() // todo check if feature is enabled in config >>> need to reset the pipeline if the config changes
             //.UsePipeTables()
             .Build();
     }

@@ -82,8 +82,8 @@ internal sealed class MdEmphasisInline : IAddChild
         span.TextDecorations = TextDecorations.Underline;
     }
 
-    public void SetMarked()
+    public void SetMarked(MarkdownThemes theme)
     {
-        span.Background = SystemColors.HighlightBrush; // todo get from theme
+        span.Background = theme.HighlightBrush;
     }
 }

@@ -98,6 +98,25 @@ public class Test
 This is a quote with two lines
 
 > First line
+>
 > Second line
+
+---
+
+This is a image `![Image](img/exampleImg1.png)`
+
+![Image](img/exampleImg1.png)
+
+This is a image with a defined size `![Image](img/exampleImg1.png=x100)`
+
+![Image](img/exampleImg1.png=x100)
+
+---
+
+This is a task list
+
+- [ ] item 1
+- [ ] item 2
+- [x] item 3 checked
 """;
 }
