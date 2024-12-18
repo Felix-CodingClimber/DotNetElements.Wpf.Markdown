@@ -19,7 +19,7 @@ internal sealed class TableRenderer : DocumentRenderer<Table>
         {
             TableRow row = (TableRow)obj[rowIndex];
 
-            MdTableRow mdTableRow = new();
+            MdTableRow mdTableRow = new(row, renderer.Config.Themes);
 
             renderer.Push(mdTableRow);
 
@@ -42,7 +42,7 @@ internal sealed class TableRenderer : DocumentRenderer<Table>
                     };
                 }
 
-                MdTableCell mdTableCell = new(textAlignment, row.IsHeader, renderer.Config.Themes);
+                MdTableCell mdTableCell = new(textAlignment, renderer.Config.Themes);
 
                 renderer.Push(mdTableCell);
                 renderer.Write(cell);

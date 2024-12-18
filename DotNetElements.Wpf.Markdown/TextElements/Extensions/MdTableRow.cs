@@ -11,9 +11,17 @@ internal sealed class MdTableRow : IAddChild
 
     private readonly TableRow tableRow;
 
-    public MdTableRow()
+    public MdTableRow(Markdig.Extensions.Tables.TableRow tableRow, MarkdownThemes themes)
     {
-        tableRow = new TableRow();
+        this.tableRow = new TableRow();
+
+        IsHeader = tableRow.IsHeader;
+
+        if (IsHeader)
+            this.tableRow.Background = themes.TableHeaderBackground;
+        else
+            this.tableRow.Background = themes.TableBackground;
+
     }
 
     public void AddChild(IAddChild child)
@@ -25,9 +33,6 @@ internal sealed class MdTableRow : IAddChild
 
             return;
         }
-
-        if(tableCell.IsHeader)
-            IsHeader = true;
 
         tableRow.Cells.Add(tableCell.TableCell);
     }

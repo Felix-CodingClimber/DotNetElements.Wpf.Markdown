@@ -8,14 +8,10 @@ internal sealed class MdTableCell : IAddChild
     public TextElement TextElement => tableCell;
     public TableCell TableCell => tableCell;
 
-    public bool IsHeader { get; private set; }
-
     private readonly TableCell tableCell;
 
-    public MdTableCell(TextAlignment textAlignment, bool isHeader, MarkdownThemes themes)
+    public MdTableCell(TextAlignment textAlignment, MarkdownThemes themes)
     {
-        IsHeader = isHeader;
-
         tableCell = new TableCell()
         {
             BorderBrush = themes.TableBorderBrush,
@@ -23,9 +19,6 @@ internal sealed class MdTableCell : IAddChild
             Padding = themes.TableCellPadding,
             TextAlignment = textAlignment
         };
-
-        if (isHeader)
-            tableCell.Background = themes.TableHeaderBackground;
     }
 
     public void AddChild(IAddChild child)
