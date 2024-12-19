@@ -196,7 +196,7 @@ public partial class MarkdownTextBlock : Control
 
     private void Build()
     {
-        renderer ??= new DocumentMarkdownWriter(document, this, Config);
+        renderer ??= new DocumentMarkdownWriter(document, RaiseLinkClickedEvent, Config);
         document.Document.FontFamily = this.FontFamily; // todo check if we want this in config
         document.Document.Background = this.Background; // todo check if we want this in config
 

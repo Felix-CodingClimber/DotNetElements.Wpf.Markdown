@@ -10,7 +10,7 @@ namespace DotNetElements.Wpf.Markdown.Core;
 
 internal class DocumentMarkdownWriter : RendererBase
 {
-    public MarkdownTextBlock MarkdownTextBlock { get; }
+    public Action<Uri> OnLinkClicked { get; }
     public MdFlowDocument FlowDocument { get; private set; }
     public MarkdownConfig Config { get; set; } = MarkdownConfig.Default;
     public MarkdownThemes Theme { get; set; } = MarkdownThemes.Default;
@@ -18,10 +18,10 @@ internal class DocumentMarkdownWriter : RendererBase
     private readonly Stack<IAddChild> stack = [];
     private char[] buffer;
 
-    public DocumentMarkdownWriter(MdFlowDocument document, MarkdownTextBlock markdownTextBlock, MarkdownConfig? config = null)
+    public DocumentMarkdownWriter(MdFlowDocument document, Action<Uri> onLinkClicked, MarkdownConfig? config = null)
     {
         FlowDocument = document;
-        MarkdownTextBlock = markdownTextBlock;
+        OnLinkClicked = onLinkClicked;
 
         if (config is not null)
             Config = config;

@@ -30,7 +30,7 @@ internal sealed class LinkInlineRenderer : DocumentRenderer<LinkInline>
 
             hyperlink.ClickEvent += (sender, e) =>
             {
-                renderer.MarkdownTextBlock.RaiseLinkClickedEvent(((Hyperlink)sender).NavigateUri);
+                renderer.OnLinkClicked(((Hyperlink)sender).NavigateUri);
             };
 
             renderer.Push(hyperlink);
