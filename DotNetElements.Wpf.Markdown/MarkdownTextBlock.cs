@@ -21,6 +21,28 @@ public partial class MarkdownTextBlock : Control
     /// </summary>
     public event EventHandler<MarkdownParsedEventArgs>? OnMarkdownParsed;
 
+    private static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
+        nameof(Theme),
+        typeof(MarkdownThemes),
+        typeof(MarkdownTextBlock),
+        new PropertyMetadata(null, OnThemeChanged)
+    );
+
+    private static void OnThemeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is not MarkdownTextBlock self)
+            throw new InvalidOperationException();
+
+        if (e.NewValue is not null)
+            self.ApplyTheme(self.Theme);
+    }
+
+    public MarkdownThemes Theme
+    {
+        get => (MarkdownThemes)GetValue(ThemeProperty);
+        set => SetValue(ThemeProperty, value);
+    }
+
     private static readonly DependencyProperty ConfigProperty = DependencyProperty.Register(
         nameof(Config),
         typeof(MarkdownConfig),
@@ -30,7 +52,10 @@ public partial class MarkdownTextBlock : Control
 
     private static void OnConfigChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (d is MarkdownTextBlock self && e.NewValue is not null)
+        if (d is not MarkdownTextBlock self)
+            throw new InvalidOperationException();
+
+        if (e.NewValue is not null)
             self.ApplyConfig(self.Config);
     }
 
@@ -131,6 +156,15 @@ public partial class MarkdownTextBlock : Control
             return;
 
         renderer.Config = config;
+    }
+
+    private void ApplyTheme(MarkdownThemes theme)
+    {
+        if (renderer is null)
+            return;
+
+        renderer.Theme = theme;
+        ApplyText(true);
     }
 
     private void ApplyText(bool rerender)

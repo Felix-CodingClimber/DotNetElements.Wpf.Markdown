@@ -11,7 +11,7 @@ internal sealed class TableRenderer : DocumentRenderer<Table>
         ArgumentNullException.ThrowIfNull(renderer);
         ArgumentNullException.ThrowIfNull(obj);
 
-        MdTable mdTable = new(renderer.Config.Themes);
+        MdTable mdTable = new(renderer.Theme);
 
         renderer.Push(mdTable);
 
@@ -19,7 +19,7 @@ internal sealed class TableRenderer : DocumentRenderer<Table>
         {
             TableRow row = (TableRow)obj[rowIndex];
 
-            MdTableRow mdTableRow = new(row, renderer.Config.Themes);
+            MdTableRow mdTableRow = new(row, renderer.Theme);
 
             renderer.Push(mdTableRow);
 
@@ -42,7 +42,7 @@ internal sealed class TableRenderer : DocumentRenderer<Table>
                     };
                 }
 
-                MdTableCell mdTableCell = new(textAlignment, renderer.Config.Themes);
+                MdTableCell mdTableCell = new(textAlignment, renderer.Theme);
 
                 renderer.Push(mdTableCell);
                 renderer.Write(cell);

@@ -10,13 +10,13 @@ internal sealed class ListRenderer : DocumentRenderer<ListBlock>
         ArgumentNullException.ThrowIfNull(renderer);
         ArgumentNullException.ThrowIfNull(obj);
 
-        MdList list = new(obj, renderer.Config);
+        MdList list = new(obj, renderer.Theme);
 
         renderer.Push(list);
 
         foreach (ListItemBlock item in obj.Cast<ListItemBlock>())
         {
-            MdListItem listItem = new(renderer.Config);
+            MdListItem listItem = new(renderer.Theme);
 
             renderer.Push(listItem);
             renderer.WriteChildren(item);

@@ -10,7 +10,7 @@ internal sealed class HeadingRenderer : DocumentRenderer<HeadingBlock>
 		ArgumentNullException.ThrowIfNull(renderer);
 		ArgumentNullException.ThrowIfNull(obj);
 
-		MdHeading heading = new(obj, renderer.Config);
+		MdHeading heading = new(obj, renderer.Theme);
 
 		renderer.Push(heading);
 		renderer.WriteLeafInline(obj);

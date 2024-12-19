@@ -5,21 +5,21 @@ namespace DotNetElements.Wpf.Markdown.TextElements;
 
 internal sealed class MdHeading : IAddChild
 {
-	public TextElement TextElement => paragraph;
+    public TextElement TextElement => paragraph;
 
-	private readonly Paragraph paragraph;
+    private readonly Paragraph paragraph;
 
-	public MdHeading(HeadingBlock headingBlock, MarkdownConfig config)
-	{
-		paragraph = new Paragraph();
+    public MdHeading(HeadingBlock headingBlock, MarkdownThemes theme)
+    {
+        paragraph = new Paragraph();
 
-		SetProperties(headingBlock.Level, config);
-	}
+        SetProperties(headingBlock.Level, theme);
+    }
 
-	public void AddChild(IAddChild child)
-	{
+    public void AddChild(IAddChild child)
+    {
         // todo
-		if (child.TextElement is not Inline inlineChild)
+        if (child.TextElement is not Inline inlineChild)
         {
             System.Diagnostics.Debug.WriteLine($"Invalid heading child {child}"); // todo debug
 
@@ -30,40 +30,40 @@ internal sealed class MdHeading : IAddChild
             cascadeChild.InheritProperties(this);
 
         paragraph.Inlines.Add(inlineChild);
-	}
+    }
 
-	private void SetProperties(int level, MarkdownConfig config)
-	{
-		paragraph.FontSize = level switch
-		{
-			1 => config.Themes.H1FontSize,
-			2 => config.Themes.H2FontSize,
-			3 => config.Themes.H3FontSize,
-			4 => config.Themes.H4FontSize,
-			5 => config.Themes.H5FontSize,
-			_ => config.Themes.H6FontSize,
-		};
+    private void SetProperties(int level, MarkdownThemes theme)
+    {
+        paragraph.FontSize = level switch
+        {
+            1 => theme.H1FontSize,
+            2 => theme.H2FontSize,
+            3 => theme.H3FontSize,
+            4 => theme.H4FontSize,
+            5 => theme.H5FontSize,
+            _ => theme.H6FontSize,
+        };
 
-		paragraph.Foreground = config.Themes.HeadingForeground;
+        paragraph.Foreground = theme.HeadingForeground;
 
-		paragraph.FontWeight = level switch
-		{
-			1 => config.Themes.H1FontWeight,
-			2 => config.Themes.H2FontWeight,
-			3 => config.Themes.H3FontWeight,
-			4 => config.Themes.H4FontWeight,
-			5 => config.Themes.H5FontWeight,
-			_ => config.Themes.H6FontWeight,
-		};
+        paragraph.FontWeight = level switch
+        {
+            1 => theme.H1FontWeight,
+            2 => theme.H2FontWeight,
+            3 => theme.H3FontWeight,
+            4 => theme.H4FontWeight,
+            5 => theme.H5FontWeight,
+            _ => theme.H6FontWeight,
+        };
 
-		paragraph.Margin = level switch
-		{
-			1 => config.Themes.H1Margin,
-			2 => config.Themes.H2Margin,
-			3 => config.Themes.H3Margin,
-			4 => config.Themes.H4Margin,
-			5 => config.Themes.H5Margin,
-			_ => config.Themes.H6Margin,
-		};
-	}
+        paragraph.Margin = level switch
+        {
+            1 => theme.H1Margin,
+            2 => theme.H2Margin,
+            3 => theme.H3Margin,
+            4 => theme.H4Margin,
+            5 => theme.H5Margin,
+            _ => theme.H6Margin,
+        };
+    }
 }

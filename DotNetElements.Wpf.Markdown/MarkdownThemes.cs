@@ -5,7 +5,7 @@ namespace DotNetElements.Wpf.Markdown;
 
 public sealed class MarkdownThemes : DependencyObject
 {
-    internal static MarkdownThemes Default { get; } = new();
+    public static MarkdownThemes Default => new();
 
     public Thickness Padding { get; set; } = new(8);
     public Thickness InternalMargin { get; set; } = new(4);

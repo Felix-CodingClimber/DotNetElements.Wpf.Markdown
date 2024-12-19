@@ -18,7 +18,7 @@ internal sealed class LinkInlineRenderer : DocumentRenderer<LinkInline>
 
         if (obj.IsImage)
         {
-            MdImage image = new(url, renderer.Config);
+            MdImage image = new(url, renderer.Config, renderer.Theme);
             renderer.WriteInline(image);
         }
         else

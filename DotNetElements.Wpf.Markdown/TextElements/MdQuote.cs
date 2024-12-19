@@ -9,16 +9,16 @@ internal sealed class MdQuote : IAddChild
 
     private readonly Section section;
 
-    public MdQuote(MarkdownConfig config)
+    public MdQuote(MarkdownThemes theme)
     {
         section = new Section
         {
-            BorderBrush = config.Themes.QuoteBorderBrush,
-            BorderThickness = config.Themes.QuoteBorderThickness,
-            Background = config.Themes.QuoteBackground,
-            Foreground = config.Themes.QuoteForeground,
-            Padding = config.Themes.QuotePadding,
-            Margin = config.Themes.QuoteMargin
+            BorderBrush = theme.QuoteBorderBrush,
+            BorderThickness = theme.QuoteBorderThickness,
+            Background = theme.QuoteBackground,
+            Foreground = theme.QuoteForeground,
+            Padding = theme.QuotePadding,
+            Margin = theme.QuoteMargin
         };
     }
 

@@ -10,7 +10,7 @@ internal sealed class TaskListRenderer : DocumentRenderer<TaskList>
 		ArgumentNullException.ThrowIfNull(renderer);
 		ArgumentNullException.ThrowIfNull(obj);
 
-		MdTaskListCheckBox checkBox = new(obj, renderer.Config.Themes);
+		MdTaskListCheckBox checkBox = new(obj, renderer.Theme);
 
 		renderer.WriteInline(checkBox);
 	}

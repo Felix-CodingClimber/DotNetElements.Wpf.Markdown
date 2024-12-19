@@ -10,7 +10,7 @@ internal sealed class CodeBlockRenderer : DocumentRenderer<CodeBlock>
 		ArgumentNullException.ThrowIfNull(renderer);
 		ArgumentNullException.ThrowIfNull(obj);
 
-		MdCodeBlock codeBlock = new(obj, renderer.Config);
+		MdCodeBlock codeBlock = new(obj, renderer.Theme);
 
         // todo is this really needed?
         // Check for all renderers

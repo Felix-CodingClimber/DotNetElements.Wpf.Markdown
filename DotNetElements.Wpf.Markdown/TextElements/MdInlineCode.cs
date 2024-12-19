@@ -1,5 +1,4 @@
 ﻿using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 using Markdig.Syntax.Inlines;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
@@ -10,16 +9,16 @@ internal sealed class MdInlineCode : IAddChild
 
 	private readonly Run run;
 
-	public MdInlineCode(CodeInline codeInline, MarkdownConfig config)
+	public MdInlineCode(CodeInline codeInline, MarkdownThemes theme)
 	{
         run = new Run(codeInline.Content)
         {
-            Background = config.Themes.InlineCodeBackground,
-            Foreground = config.Themes.InlineCodeForeground,
-            FontSize = config.Themes.InlineCodeFontSize,
-            FontWeight = config.Themes.InlineCodeFontWeight
+            Background = theme.InlineCodeBackground,
+            Foreground = theme.InlineCodeForeground,
+            FontSize = theme.InlineCodeFontSize,
+            FontWeight = theme.InlineCodeFontWeight
         };
-        //run.Padding = config.Themes.InlineCodePadding; // todo not working
+        //run.Padding = config.InlineCodePadding; // todo not working
     }
 
     // Not used here

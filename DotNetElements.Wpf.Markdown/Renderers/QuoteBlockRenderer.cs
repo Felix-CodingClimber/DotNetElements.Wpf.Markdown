@@ -11,7 +11,7 @@ internal sealed class QuoteBlockRenderer : DocumentRenderer<QuoteBlock>
         ArgumentNullException.ThrowIfNull(renderer);
         ArgumentNullException.ThrowIfNull(obj);
 
-        MdQuote quote = new(renderer.Config);
+        MdQuote quote = new(renderer.Theme);
 
         renderer.Push(quote);
         renderer.WriteChildren(obj);

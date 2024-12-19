@@ -9,11 +9,11 @@ internal sealed class MdListItem : IAddChild
 
     private readonly ListItem listItem;
 
-    public MdListItem(MarkdownConfig config)
+    public MdListItem(MarkdownThemes theme)
     {
         listItem = new ListItem()
         {
-            Margin = config.Themes.ListItemParagraphMargin,
+            Margin = theme.ListItemParagraphMargin,
         };
     }
 

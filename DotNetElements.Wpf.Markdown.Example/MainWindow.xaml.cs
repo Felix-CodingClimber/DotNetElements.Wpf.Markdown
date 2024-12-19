@@ -9,9 +9,9 @@ namespace DotNetElements.Wpf.Markdown.Example;
 [ObservableObject]
 public partial class MainWindow : Window
 {
-	public MainWindow()
-	{
-		InitializeComponent();
+    public MainWindow()
+    {
+        InitializeComponent();
 
         MarkdownTextBlock.OnLinkClicked += MarkdownTextBlock_OnLinkClicked;
         MarkdownTextBlock.OnMarkdownParsed += MarkdownTextBlock_OnMarkdownParsed;

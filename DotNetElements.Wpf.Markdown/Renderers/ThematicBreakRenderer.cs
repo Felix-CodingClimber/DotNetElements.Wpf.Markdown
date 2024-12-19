@@ -10,7 +10,7 @@ internal sealed class ThematicBreakRenderer : DocumentRenderer<ThematicBreakBloc
 		ArgumentNullException.ThrowIfNull(renderer);
 		ArgumentNullException.ThrowIfNull(obj);
 
-		MdThematicBreak thematicBreak = new(renderer.Config);
+		MdThematicBreak thematicBreak = new(renderer.Theme);
 
 		renderer.WriteBlock(thematicBreak);
 	}

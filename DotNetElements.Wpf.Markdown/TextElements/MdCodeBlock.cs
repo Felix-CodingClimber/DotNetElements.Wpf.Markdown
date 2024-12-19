@@ -10,17 +10,17 @@ internal sealed class MdCodeBlock : IAddChild
 
     private readonly Paragraph paragraph;
 
-    public MdCodeBlock(CodeBlock codeBlock, MarkdownConfig config)
+    public MdCodeBlock(CodeBlock codeBlock, MarkdownThemes theme)
     {
         paragraph = new Paragraph
         {
-            Background = config.Themes.CodeBlockBackground,
-            Foreground = config.Themes.CodeBlockForeground,
-            FontSize = config.Themes.CodeBlockFontSize,
-            FontWeight = config.Themes.CodeBlockFontWeight,
-            Padding = config.Themes.CodeBlockPadding,
-            BorderBrush = config.Themes.CodeBlockBorderBrush,
-            BorderThickness = config.Themes.CodeBlockBorderThickness
+            Background = theme.CodeBlockBackground,
+            Foreground = theme.CodeBlockForeground,
+            FontSize = theme.CodeBlockFontSize,
+            FontWeight = theme.CodeBlockFontWeight,
+            Padding = theme.CodeBlockPadding,
+            BorderBrush = theme.CodeBlockBorderBrush,
+            BorderThickness = theme.CodeBlockBorderThickness
         };
 
         foreach (StringLine line in codeBlock.Lines.Lines)

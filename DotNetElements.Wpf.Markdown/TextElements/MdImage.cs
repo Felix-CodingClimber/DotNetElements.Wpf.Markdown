@@ -15,7 +15,7 @@ internal sealed class MdImage : IAddChild
     private readonly string url;
     private readonly MarkdownConfig config;
 
-    public MdImage(string url, MarkdownConfig config)
+    public MdImage(string url, MarkdownConfig config, MarkdownThemes theme)
     {
         ArgumentNullException.ThrowIfNull(url);
 
@@ -56,8 +56,8 @@ internal sealed class MdImage : IAddChild
         }
         else
         {
-            image.MaxWidth = config.Themes.ImageMaxWidth;
-            image.MaxHeight = config.Themes.ImageMaxHeight;
+            image.MaxWidth = theme.ImageMaxWidth;
+            image.MaxHeight = theme.ImageMaxHeight;
         }
 
         image.Loaded += LoadImageAsync;

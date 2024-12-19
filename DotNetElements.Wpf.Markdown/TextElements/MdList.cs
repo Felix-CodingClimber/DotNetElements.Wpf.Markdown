@@ -15,7 +15,7 @@ internal sealed class MdList : IAddChild
     private static readonly Thickness unorderedPadding = new(left: 15, top: 0, right: 0, bottom: 0);
     private static readonly Thickness orderedPadding = new(left: 20, top: 0, right: 0, bottom: 0);
 
-    public MdList(ListBlock listBlock, MarkdownConfig config)
+    public MdList(ListBlock listBlock, MarkdownThemes theme)
     {
         int startIndex = 1;
 
@@ -31,7 +31,7 @@ internal sealed class MdList : IAddChild
         {
             MarkerStyle = isOrdered ? TextMarkerStyle.Decimal : TextMarkerStyle.Disc,
             StartIndex = isOrdered ? startIndex : 1,
-            Margin = config.Themes.ListMargin,
+            Margin = theme.ListMargin,
             Padding = isOrdered ? orderedPadding : unorderedPadding
         };
     }

@@ -13,6 +13,7 @@ internal class DocumentMarkdownWriter : RendererBase
     public MarkdownTextBlock MarkdownTextBlock { get; }
     public MdFlowDocument FlowDocument { get; private set; }
     public MarkdownConfig Config { get; set; } = MarkdownConfig.Default;
+    public MarkdownThemes Theme { get; set; } = MarkdownThemes.Default;
 
     private readonly Stack<IAddChild> stack = [];
     private char[] buffer;

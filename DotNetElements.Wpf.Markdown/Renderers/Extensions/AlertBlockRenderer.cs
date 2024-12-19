@@ -11,7 +11,7 @@ internal sealed class AlertBlockRenderer : DocumentRenderer<AlertBlock>
         ArgumentNullException.ThrowIfNull(renderer);
         ArgumentNullException.ThrowIfNull(obj);
 
-        MdAlert alert = new(obj, renderer.Config);
+        MdAlert alert = new(obj, renderer.Theme);
 
         renderer.Push(alert);
         renderer.WriteChildren(obj);

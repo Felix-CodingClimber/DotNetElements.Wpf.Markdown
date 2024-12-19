@@ -10,6 +10,6 @@ internal sealed class CodeInlineRenderer : DocumentRenderer<CodeInline>
         ArgumentNullException.ThrowIfNull(renderer);
         ArgumentNullException.ThrowIfNull(obj);
 
-        renderer.WriteInline(new MdInlineCode(obj, renderer.Config));
+        renderer.WriteInline(new MdInlineCode(obj, renderer.Theme));
     }
 }

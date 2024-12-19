@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
-using DotNetElements.Wpf.Markdown.Core;
 using Markdig.Extensions.Alerts;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
@@ -13,31 +12,31 @@ internal sealed class MdAlert : IAddChild
 
     private readonly Section section;
 
-    public MdAlert(AlertBlock alertBlock, MarkdownConfig config)
+    public MdAlert(AlertBlock alertBlock, MarkdownThemes theme)
     {
         string kind = alertBlock.Kind.ToString();
 
         section = new Section
         {
-            BorderBrush = GetBrushForKind(kind, config.Themes),
-            BorderThickness = config.Themes.AlertBorderThickness,
-            Background = config.Themes.AlertBackground,
-            Foreground = config.Themes.AlertForeground,
-            Padding = config.Themes.AlertPadding,
-            Margin = config.Themes.AlertMargin,
-            FontSize = config.Themes.AlertHeaderFontSize
+            BorderBrush = GetBrushForKind(kind, theme),
+            BorderThickness = theme.AlertBorderThickness,
+            Background = theme.AlertBackground,
+            Foreground = theme.AlertForeground,
+            Padding = theme.AlertPadding,
+            Margin = theme.AlertMargin,
+            FontSize = theme.AlertHeaderFontSize
         };
 
         Run header = new Run(kind)
         {
-            Foreground = GetBrushForKind(kind, config.Themes),
+            Foreground = GetBrushForKind(kind, theme),
             FontWeight = FontWeights.Bold,
-            FontSize = config.Themes.AlertHeaderFontSize,
+            FontSize = theme.AlertHeaderFontSize,
         };
 
         Paragraph headerParagraph = new Paragraph(header)
         {
-            Margin = new Thickness(left: 0, top: 0, right: 0, bottom: config.Themes.AlertHeaderSpacing)
+            Margin = new Thickness(left: 0, top: 0, right: 0, bottom: theme.AlertHeaderSpacing)
         };
 
         section.Blocks.Add(headerParagraph);
