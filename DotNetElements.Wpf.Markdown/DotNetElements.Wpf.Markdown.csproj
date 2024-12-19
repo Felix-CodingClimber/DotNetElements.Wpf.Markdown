@@ -4,14 +4,15 @@
 		<TargetFramework>net9.0-windows</TargetFramework>
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
+		<LangVersion>latest</LangVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<PackageReference Include="Markdig" Version="0.38.0" />
 		<PackageReference Include="System.Drawing.Common" Version="9.0.0" />
 	</ItemGroup>
-	
+
 	<PropertyGroup>
 		<PackageId>DotNetElements.Wpf.Markdown</PackageId>
 		<Title>DotNetElements - WPF Markdown Component</Title>
