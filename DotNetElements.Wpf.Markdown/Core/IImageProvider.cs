@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media.Imaging;
 
-namespace DotNetElements.Wpf.Markdown;
+namespace DotNetElements.Wpf.Markdown.Core;
 
 public interface IImageProvider
 {

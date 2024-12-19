@@ -18,8 +18,18 @@ internal sealed class MdHeading : IAddChild
 
 	public void AddChild(IAddChild child)
 	{
-		if (child.TextElement is Inline inlineChild)
-			paragraph.Inlines.Add(inlineChild);
+        // todo
+		if (child.TextElement is not Inline inlineChild)
+        {
+            System.Diagnostics.Debug.WriteLine($"Invalid heading child {child}"); // todo debug
+
+            return;
+        }
+
+        if (child is ICascadeChild cascadeChild)
+            cascadeChild.InheritProperties(this);
+
+        paragraph.Inlines.Add(inlineChild);
 	}
 
 	private void SetProperties(int level, MarkdownConfig config)

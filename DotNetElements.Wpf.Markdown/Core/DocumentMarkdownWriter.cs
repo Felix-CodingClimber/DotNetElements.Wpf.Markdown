@@ -6,7 +6,7 @@ using Markdig.Helpers;
 using Markdig.Renderers;
 using Markdig.Syntax;
 
-namespace DotNetElements.Wpf.Markdown;
+namespace DotNetElements.Wpf.Markdown.Core;
 
 internal class DocumentMarkdownWriter : RendererBase
 {

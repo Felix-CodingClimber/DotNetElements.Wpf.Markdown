@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using DotNetElements.Wpf.Markdown.Core;
 
 namespace DotNetElements.Wpf.Markdown.Example;
 
@@ -47,6 +48,18 @@ This is a ==Marked== inline text
 This is a inline `code` element
 
 This is a [Link](http://a.com)
+
+---
+
+Nested style test
+
+# Headline with some^superscript^
+
+**bold~sub~ and^super^**
+
+regular~sub~ and^super^
+
+*nested italics **and bold***
 
 ---
 

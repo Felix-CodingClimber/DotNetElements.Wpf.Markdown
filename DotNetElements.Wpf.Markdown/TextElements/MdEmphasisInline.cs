@@ -3,15 +3,12 @@ using System.Windows.Documents;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdEmphasisInline : IAddChild
+internal sealed class MdEmphasisInline : IAddChild, ICascadeChild
 {
     public TextElement TextElement => span;
 
     private readonly Span span;
-
-    private bool isBold;
-    private bool isItalic;
-    private bool isStrikeThrough;
+    private Span? subSuperSpan;
 
     public MdEmphasisInline()
     {
@@ -22,22 +19,18 @@ internal sealed class MdEmphasisInline : IAddChild
     {
         try
         {
+            if (child is ICascadeChild cascadeChild)
+                cascadeChild.InheritProperties(this);
+
+            InlineCollection inlines = subSuperSpan is not null ? subSuperSpan.Inlines : span.Inlines;
+
             if (child is MdInlineText inlineText)
             {
-                span.Inlines.Add(inlineText.Run);
+                inlines.Add(inlineText.Run);
             }
             else if (child is MdEmphasisInline emphasisInline)
             {
-                if (emphasisInline.isBold)
-                    SetBold();
-
-                if (emphasisInline.isItalic)
-                    SetItalic();
-
-                if (emphasisInline.isStrikeThrough)
-                    SetStrikeThrough();
-
-                span.Inlines.Add(emphasisInline.span);
+                inlines.Add(emphasisInline.span);
             }
         }
         catch (Exception ex)
@@ -46,35 +39,40 @@ internal sealed class MdEmphasisInline : IAddChild
         }
     }
 
+    public void InheritProperties(IAddChild parent)
+    {
+        if (subSuperSpan is null)
+            return;
+
+        subSuperSpan.FontFamily = parent.TextElement.FontFamily;
+        subSuperSpan.FontWeight = parent.TextElement.FontWeight;
+        subSuperSpan.FontStyle = parent.TextElement.FontStyle;
+        subSuperSpan.Foreground = parent.TextElement.Foreground;
+    }
+
     public void SetBold()
     {
         span.FontWeight = FontWeights.Bold;
-
-        isBold = true;
     }
 
     public void SetItalic()
     {
         span.FontStyle = FontStyles.Italic;
-        isItalic = true;
     }
 
     public void SetStrikeThrough()
     {
         span.TextDecorations = TextDecorations.Strikethrough;
-        isStrikeThrough = true;
     }
 
-    // todo not working properly
     public void SetSubscript()
     {
-        span.SetValue(Typography.VariantsProperty, FontVariants.Subscript);
+        ConstructSubSuperContainer(BaselineAlignment.Subscript);
     }
 
-    // todo not working properly
     public void SetSuperscript()
     {
-        span.SetValue(Typography.VariantsProperty, FontVariants.Superscript);
+        ConstructSubSuperContainer(BaselineAlignment.Superscript);
     }
 
     public void SetInserted()
@@ -85,5 +83,17 @@ internal sealed class MdEmphasisInline : IAddChild
     public void SetMarked(MarkdownThemes theme)
     {
         span.Background = theme.HighlightBrush;
+    }
+
+    private void ConstructSubSuperContainer(BaselineAlignment baselineAlignment)
+    {
+        Span nestedSpan = new()
+        {
+            FontSize = span.FontSize * 0.8,
+            BaselineAlignment = baselineAlignment,
+        };
+
+        span.Inlines.Add(nestedSpan);
+        subSuperSpan = nestedSpan;
     }
 }

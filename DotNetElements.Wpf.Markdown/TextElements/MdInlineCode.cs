@@ -1,4 +1,5 @@
 ﻿using System.Windows.Documents;
+using DotNetElements.Wpf.Markdown.Core;
 using Markdig.Syntax.Inlines;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;

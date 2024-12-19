@@ -1,6 +1,7 @@
 ﻿using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using DotNetElements.Wpf.Markdown.Core;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 

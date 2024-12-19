@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
+using DotNetElements.Wpf.Markdown.Core;
 using Markdig.Extensions.Alerts;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;

@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Documents;
+using DotNetElements.Wpf.Markdown.Core;
 using Markdig.Extensions.TaskLists;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
