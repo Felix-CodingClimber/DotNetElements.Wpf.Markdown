@@ -1,1 +1,419 @@
-﻿
+﻿<FlowDocument
+  FontFamily="Segoe UI"
+  Background="#FFFFFFFF"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <Paragraph
+    Margin="0,14,0,0"
+    FontWeight="Bold"
+    FontSize="22"
+    Foreground="#FF800080">Heading 1</Paragraph>
+  <Paragraph
+    Margin="0,14,0,0"
+    FontWeight="Normal"
+    FontSize="20"
+    Foreground="#FF800080">Heading 2</Paragraph>
+  <Paragraph
+    Margin="0,14,0,0"
+    FontWeight="Normal"
+    FontSize="18"
+    Foreground="#FF800080">Heading 3</Paragraph>
+  <Paragraph
+    Margin="0,14,0,0"
+    FontWeight="Normal"
+    FontSize="16"
+    Foreground="#FF800080">Heading 4</Paragraph>
+  <Paragraph
+    Margin="0,8,0,0"
+    FontWeight="Normal"
+    FontSize="14"
+    Foreground="#FF800080">Heading 5</Paragraph>
+  <Paragraph>This is a simple paragraph</Paragraph>
+  <Paragraph>This is a very long paragraph which should break in the flow document automatically. Somewhere around here should be a line break.</Paragraph>
+  <Paragraph>This is a <Span
+      FontWeight="Bold">Bold</Span> inline text</Paragraph>
+  <Paragraph>This is a <Span
+      FontStyle="Italic">Italic</Span> inline text</Paragraph>
+  <Paragraph>This is a <Span><Span.TextDecorations><TextDecoration
+          Location="Strikethrough" /></Span.TextDecorations>Strikethrough</Span> inline text</Paragraph>
+  <Paragraph>This is a <Span><Span.TextDecorations><TextDecoration
+          Location="Underline" /></Span.TextDecorations>Underline</Span> inline text</Paragraph>
+  <Paragraph>This is a <Span
+      Background="#FFADD8E6">Marked</Span> inline text</Paragraph>
+  <Paragraph>This is a inline <Run
+      FontWeight="Normal"
+      FontSize="12"
+      Foreground="#FF000000"
+      Background="#FFD3D3D3">code</Run> element</Paragraph>
+  <Paragraph>This is a <Hyperlink
+      NavigateUri="http://a.com">Link</Hyperlink></Paragraph>
+  <Paragraph>
+    <Line
+      X2="1"
+      Stretch="Fill"
+      Stroke="#FF808080"
+      StrokeThickness="2"
+      Margin="0,12,0,12" />
+  </Paragraph>
+  <Paragraph>Nested style test</Paragraph>
+  <Paragraph
+    Margin="0,14,0,0"
+    FontWeight="Bold"
+    FontSize="22"
+    Foreground="#FF800080">Headline with some<Span><Span
+        BaselineAlignment="Superscript"
+        FontFamily="Segoe UI"
+        FontStyle="Normal"
+        FontWeight="Bold"
+        FontSize="9.600000000000001"
+        Foreground="#FF800080">superscript</Span></Span></Paragraph>
+  <Paragraph>
+    <Span
+      FontWeight="Bold">bold<Span><Span
+          BaselineAlignment="Subscript"
+          FontFamily="Segoe UI"
+          FontStyle="Normal"
+          FontWeight="Bold"
+          FontSize="9.600000000000001"
+          Foreground="#FF000000">sub</Span></Span> and<Span><Span
+          BaselineAlignment="Superscript"
+          FontFamily="Segoe UI"
+          FontStyle="Normal"
+          FontWeight="Bold"
+          FontSize="9.600000000000001"
+          Foreground="#FF000000">super</Span></Span></Span>
+  </Paragraph>
+  <Paragraph>regular<Span><Span
+        BaselineAlignment="Subscript"
+        FontSize="9.600000000000001">sub</Span></Span> and<Span><Span
+        BaselineAlignment="Superscript"
+        FontSize="9.600000000000001">super</Span></Span></Paragraph>
+  <Paragraph>
+    <Span
+      FontStyle="Italic">nested italics <Span
+        FontWeight="Bold">and bold</Span></Span>
+  </Paragraph>
+  <Paragraph>
+    <Line
+      X2="1"
+      Stretch="Fill"
+      Stroke="#FF808080"
+      StrokeThickness="2"
+      Margin="0,12,0,12" />
+  </Paragraph>
+  <Paragraph>This is a unordered list:</Paragraph>
+  <List
+    MarkerStyle="Disc"
+    StartIndex="1"
+    Margin="5,5,5,5"
+    Padding="15,0,0,0">
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 1</Paragraph>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 2 <Span
+          FontWeight="Bold">Bold inline element</Span></Paragraph>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 3 <Span
+          FontWeight="Bold">First inline element</Span><Span
+          FontStyle="Italic">Second inline element</Span> third default inline element</Paragraph>
+    </ListItem>
+  </List>
+  <Paragraph>This is a ordered list:</Paragraph>
+  <List
+    MarkerStyle="Decimal"
+    StartIndex="1"
+    Margin="5,5,5,5"
+    Padding="20,0,0,0">
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 1</Paragraph>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 2 <Span
+          FontWeight="Bold">Bold inline element</Span></Paragraph>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 3 <Span
+          FontWeight="Bold">First inline element</Span><Span
+          FontStyle="Italic">Second inline element</Span> third default inline element</Paragraph>
+    </ListItem>
+  </List>
+  <Paragraph>This is another ordered list:</Paragraph>
+  <List
+    MarkerStyle="Decimal"
+    StartIndex="1"
+    Margin="5,5,5,5"
+    Padding="20,0,0,0">
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Second list item 1</Paragraph>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Second list item 2</Paragraph>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Second list item 3</Paragraph>
+    </ListItem>
+  </List>
+  <Paragraph>This is a nested unordered list:</Paragraph>
+  <List
+    MarkerStyle="Disc"
+    StartIndex="1"
+    Margin="5,5,5,5"
+    Padding="15,0,0,0">
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 1</Paragraph>
+      <List
+        MarkerStyle="Disc"
+        StartIndex="1"
+        Margin="5,5,5,5"
+        Padding="15,0,0,0">
+        <ListItem
+          Margin="0,0,0,5">
+          <Paragraph>Nested item 1</Paragraph>
+        </ListItem>
+        <ListItem
+          Margin="0,0,0,5">
+          <Paragraph>Nested item 2</Paragraph>
+        </ListItem>
+      </List>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 2</Paragraph>
+    </ListItem>
+  </List>
+  <Paragraph>This is a nested ordered list:</Paragraph>
+  <List
+    MarkerStyle="Decimal"
+    StartIndex="1"
+    Margin="5,5,5,5"
+    Padding="20,0,0,0">
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 1</Paragraph>
+      <List
+        MarkerStyle="Decimal"
+        StartIndex="1"
+        Margin="5,5,5,5"
+        Padding="20,0,0,0">
+        <ListItem
+          Margin="0,0,0,5">
+          <Paragraph>Nested item 1</Paragraph>
+        </ListItem>
+        <ListItem
+          Margin="0,0,0,5">
+          <Paragraph>Nested item 2</Paragraph>
+        </ListItem>
+      </List>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>Item 2</Paragraph>
+    </ListItem>
+  </List>
+  <Paragraph>
+    <Line
+      X2="1"
+      Stretch="Fill"
+      Stroke="#FF808080"
+      StrokeThickness="2"
+      Margin="0,12,0,12" />
+  </Paragraph>
+  <Paragraph>This is a code block:</Paragraph>
+  <Paragraph
+    Padding="5,3,5,3"
+    BorderThickness="1,1,1,1"
+    BorderBrush="#FF808080"
+    FontWeight="Normal"
+    FontSize="12"
+    Foreground="#FF000000"
+    Background="#FFD3D3D3"
+    xml:space="preserve">public class Test<LineBreak />{}{<LineBreak />    public void TestMethod()<LineBreak />    {<LineBreak />        Console.WriteLine("Hello World");<LineBreak />    }<LineBreak />}</Paragraph>
+  <Paragraph>
+    <Line
+      X2="1"
+      Stretch="Fill"
+      Stroke="#FF808080"
+      StrokeThickness="2"
+      Margin="0,12,0,12" />
+  </Paragraph>
+  <Section
+    Margin="0,0,0,0"
+    Padding="5,3,5,3"
+    BorderThickness="5,0,0,0"
+    BorderBrush="#FF808080"
+    Foreground="#FF000000"
+    Background="#FFD3D3D3">
+    <Paragraph
+      Margin="Auto,0,Auto,0">This is a quote</Paragraph>
+  </Section>
+  <Paragraph>This is a quote with two lines</Paragraph>
+  <Section
+    Margin="0,0,0,0"
+    Padding="5,3,5,3"
+    BorderThickness="5,0,0,0"
+    BorderBrush="#FF808080"
+    Foreground="#FF000000"
+    Background="#FFD3D3D3">
+    <Paragraph
+      Margin="Auto,0,Auto,Auto">First line</Paragraph>
+    <Paragraph
+      Margin="Auto,Auto,Auto,0">Second line</Paragraph>
+  </Section>
+  <Paragraph>
+    <Line
+      X2="1"
+      Stretch="Fill"
+      Stroke="#FF808080"
+      StrokeThickness="2"
+      Margin="0,12,0,12" />
+  </Paragraph>
+  <Paragraph>This is a image <Run
+      FontWeight="Normal"
+      FontSize="12"
+      Foreground="#FF000000"
+      Background="#FFD3D3D3">![Image](img/exampleImg1.png)</Run></Paragraph>
+  <Paragraph>
+    <Image
+      MaxWidth="400"
+      MaxHeight="400"
+      HorizontalAlignment="Left" />
+  </Paragraph>
+  <Paragraph>This is a image with a defined size <Run
+      FontWeight="Normal"
+      FontSize="12"
+      Foreground="#FF000000"
+      Background="#FFD3D3D3">![Image](img/exampleImg1.png=x100)</Run></Paragraph>
+  <Paragraph>
+    <Image
+      Height="100"
+      HorizontalAlignment="Left" />
+  </Paragraph>
+  <Paragraph>
+    <Line
+      X2="1"
+      Stretch="Fill"
+      Stroke="#FF808080"
+      StrokeThickness="2"
+      Margin="0,12,0,12" />
+  </Paragraph>
+  <Paragraph>This is a task list</Paragraph>
+  <List
+    MarkerStyle="Disc"
+    StartIndex="1"
+    Margin="5,5,5,5"
+    Padding="15,0,0,0">
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>
+        <InlineUIContainer
+          BaselineAlignment="Center">
+          <CheckBox
+            IsChecked="False"
+            IsHitTestVisible="False"
+            Focusable="False" />
+        </InlineUIContainer> item 1</Paragraph>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>
+        <InlineUIContainer
+          BaselineAlignment="Center">
+          <CheckBox
+            IsChecked="False"
+            IsHitTestVisible="False"
+            Focusable="False" />
+        </InlineUIContainer> item 2</Paragraph>
+    </ListItem>
+    <ListItem
+      Margin="0,0,0,5">
+      <Paragraph>
+        <InlineUIContainer
+          BaselineAlignment="Center">
+          <CheckBox
+            IsChecked="True"
+            IsHitTestVisible="False"
+            Focusable="False" />
+        </InlineUIContainer> item 3 checked</Paragraph>
+    </ListItem>
+  </List>
+  <Paragraph>
+    <Line
+      X2="1"
+      Stretch="Fill"
+      Stroke="#FF808080"
+      StrokeThickness="2"
+      Margin="0,12,0,12" />
+  </Paragraph>
+  <Paragraph>This is a table</Paragraph>
+  <Table
+    CellSpacing="0"
+    BorderThickness="1,1,0,0"
+    BorderBrush="#FF808080">
+    <Table.Columns>
+      <TableColumn />
+      <TableColumn />
+      <TableColumn />
+    </Table.Columns>
+    <TableRowGroup>
+      <TableRow
+        Background="#FFADD8E6">
+        <TableCell
+          Padding="5,3,5,3"
+          BorderThickness="0,0,1,1"
+          BorderBrush="#FF808080"
+          TextAlignment="Left">
+          <Paragraph>Header 1</Paragraph>
+        </TableCell>
+        <TableCell
+          Padding="5,3,5,3"
+          BorderThickness="0,0,1,1"
+          BorderBrush="#FF808080"
+          TextAlignment="Left">
+          <Paragraph>Header 2</Paragraph>
+        </TableCell>
+        <TableCell
+          Padding="5,3,5,3"
+          BorderThickness="0,0,1,1"
+          BorderBrush="#FF808080"
+          TextAlignment="Left">
+          <Paragraph>Header 3</Paragraph>
+        </TableCell>
+      </TableRow>
+    </TableRowGroup>
+    <TableRowGroup>
+      <TableRow
+        Background="#00FFFFFF">
+        <TableCell
+          Padding="5,3,5,3"
+          BorderThickness="0,0,1,1"
+          BorderBrush="#FF808080"
+          TextAlignment="Left">
+          <Paragraph>Row 1</Paragraph>
+        </TableCell>
+        <TableCell
+          Padding="5,3,5,3"
+          BorderThickness="0,0,1,1"
+          BorderBrush="#FF808080"
+          TextAlignment="Left">
+          <Paragraph>Row 1</Paragraph>
+        </TableCell>
+        <TableCell
+          Padding="5,3,5,3"
+          BorderThickness="0,0,1,1"
+          BorderBrush="#FF808080"
+          TextAlignment="Left">
+          <Paragraph>Row 1</Paragraph>
+        </TableCell>
+      </TableRow>
+    </TableRowGroup>
