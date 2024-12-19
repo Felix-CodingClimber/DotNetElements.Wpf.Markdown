@@ -1,21 +1,38 @@
 ﻿using System.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using DotNetElements.Wpf.Markdown.Core;
+using Markdig.Syntax;
 
 namespace DotNetElements.Wpf.Markdown.Example;
 
+[ObservableObject]
 public partial class MainWindow : Window
 {
 	public MainWindow()
 	{
 		InitializeComponent();
 
-        MarkdownInput.Text = ExampleMarkdown;
         MarkdownTextBlock.OnLinkClicked += MarkdownTextBlock_OnLinkClicked;
-	}
+        MarkdownTextBlock.OnMarkdownParsed += MarkdownTextBlock_OnMarkdownParsed;
+        MarkdownTextBlock.MarkdownParsedCommand = new RelayCommand<MarkdownDocument>(MarkdownTextBlock_OnMarkdownParsedCommand);
+
+        MarkdownInput.Text = ExampleMarkdown;
+    }
+
+    private void MarkdownTextBlock_OnMarkdownParsedCommand(MarkdownDocument? markdownDocument)
+    {
+        System.Diagnostics.Debug.WriteLine("Markdown parsed command"); // todo debug
+    }
+
+    private void MarkdownTextBlock_OnMarkdownParsed(object? sender, MarkdownParsedEventArgs e)
+    {
+        System.Diagnostics.Debug.WriteLine("Markdown parsed event"); // todo debug
+    }
 
     private void MarkdownTextBlock_OnLinkClicked(object? sender, LinkClickedEventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine($"Clicked link {e.Uri}"); // todo debug
+        System.Diagnostics.Debug.WriteLine($"Link clicked: {e.Uri}"); // todo debug
     }
 
     private void OnRefreshButton_Click(object sender, RoutedEventArgs e)

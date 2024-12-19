@@ -3,12 +3,24 @@ using Markdig;
 using Markdig.Syntax;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace DotNetElements.Wpf.Markdown;
 
 [TemplatePart(Name = MarkdownContainerName, Type = typeof(Grid))]
 public partial class MarkdownTextBlock : Control
 {
+    /// <summary>
+    /// Event raised when a markdown link is clicked.
+    /// </summary>
+    public event EventHandler<LinkClickedEventArgs>? OnLinkClicked;
+
+    /// <summary>
+    /// Event raised when markdown is done parsing, with a complete MarkdownDocument.
+    /// It is always raised before the control renders the document.
+    /// </summary>
+    public event EventHandler<MarkdownParsedEventArgs>? OnMarkdownParsed;
+
     private static readonly DependencyProperty ConfigProperty = DependencyProperty.Register(
         nameof(Config),
         typeof(MarkdownConfig),
@@ -51,7 +63,7 @@ public partial class MarkdownTextBlock : Control
         set => SetValue(TextProperty, value);
     }
 
-    private static readonly DependencyProperty MarkdownDocumentProperty = DependencyProperty.Register(
+    private static readonly DependencyPropertyKey MarkdownDocumentPropertyKey = DependencyProperty.RegisterReadOnly(
         nameof(MarkdownDocument),
         typeof(MarkdownDocument),
         typeof(MarkdownTextBlock),
@@ -59,11 +71,22 @@ public partial class MarkdownTextBlock : Control
 
     public MarkdownDocument? MarkdownDocument
     {
-        get => (MarkdownDocument)GetValue(MarkdownDocumentProperty);
-        private set => SetValue(MarkdownDocumentProperty, value);
+        get => (MarkdownDocument)GetValue(MarkdownDocumentPropertyKey.DependencyProperty);
+        private set => SetValue(MarkdownDocumentPropertyKey, value);
     }
 
-    public event EventHandler<LinkClickedEventArgs>? OnLinkClicked;
+    private static readonly DependencyProperty MarkdownParsedCommandProperty = DependencyProperty.Register(
+        nameof(MarkdownParsedCommand),
+        typeof(ICommand),
+        typeof(MarkdownTextBlock),
+        new PropertyMetadata(null)
+    );
+
+    public ICommand MarkdownParsedCommand
+    {
+        get => (ICommand)GetValue(MarkdownParsedCommandProperty);
+        set => SetValue(MarkdownParsedCommandProperty, value);
+    }
 
     internal void RaiseLinkClickedEvent(Uri uri) => OnLinkClicked?.Invoke(this, new LinkClickedEventArgs(uri));
 
@@ -121,6 +144,10 @@ public partial class MarkdownTextBlock : Control
         if (!string.IsNullOrEmpty(Text))
         {
             MarkdownDocument = Markdig.Markdown.Parse(Text, pipeline);
+
+            OnMarkdownParsed?.Invoke(this, new MarkdownParsedEventArgs(MarkdownDocument));
+            MarkdownParsedCommand?.Execute(MarkdownDocument);
+
             renderer.Render(MarkdownDocument);
         }
     }

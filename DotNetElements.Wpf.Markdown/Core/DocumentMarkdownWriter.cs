@@ -169,8 +169,6 @@ internal class DocumentMarkdownWriter : RendererBase
         if (Config.FeatureAlertBlocksSupported)
             ObjectRenderers.Add(new AlertBlockRenderer());
 
-        //ObjectRenderers.Add(new HtmlInlineRenderer());
-
         // Default block renderers
         ObjectRenderers.Add(new CodeBlockRenderer());
         ObjectRenderers.Add(new ListRenderer());
@@ -185,7 +183,6 @@ internal class DocumentMarkdownWriter : RendererBase
         ObjectRenderers.Add(new CodeInlineRenderer());
         //ObjectRenderers.Add(new DelimiterInlineRenderer());
         ObjectRenderers.Add(new EmphasisInlineRenderer());
-        //ObjectRenderers.Add(new HtmlEntityInlineRenderer());
         ObjectRenderers.Add(new LineBreakInlineRenderer());
         ObjectRenderers.Add(new LinkInlineRenderer());
         ObjectRenderers.Add(new LiteralInlineRenderer());
