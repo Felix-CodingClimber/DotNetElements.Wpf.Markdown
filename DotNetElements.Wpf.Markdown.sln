@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetElements.Wpf.Markdown
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetElements.Wpf.Markdown.Tests", "DotNetElements.Wpf.Markdown.Tests\DotNetElements.Wpf.Markdown.Tests.csproj", "{434587F8-C56F-4511-99EC-DB716C8BEA9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetElements.Wpf.Markdown.Benchmarks", "DotNetElements.Wpf.Markdown.Benchmarks\DotNetElements.Wpf.Markdown.Benchmarks.csproj", "{79589396-3F36-475B-BDC0-0FF1046036CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{434587F8-C56F-4511-99EC-DB716C8BEA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{434587F8-C56F-4511-99EC-DB716C8BEA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{434587F8-C56F-4511-99EC-DB716C8BEA9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79589396-3F36-475B-BDC0-0FF1046036CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79589396-3F36-475B-BDC0-0FF1046036CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79589396-3F36-475B-BDC0-0FF1046036CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79589396-3F36-475B-BDC0-0FF1046036CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
