@@ -44,10 +44,7 @@ MarkdownTextBlock.Text = "Hello world from **DotNetElements.Wpf.Markdown**";
 MarkdownThemes myTheme = MarkdownThemes.Default;
 myTheme.InlineCodeBackground = new SolidColorBrush(Colors.HotPink);
 
-MarkdownConfig myConfig = MarkdownConfig.Default;
-myConfig.Themes = myTheme;
-
-MarkdownTextBlock.Config = myConfig;
+MarkdownTextBlock.Theme = myTheme;
 ```
 
 ## Third party notices
