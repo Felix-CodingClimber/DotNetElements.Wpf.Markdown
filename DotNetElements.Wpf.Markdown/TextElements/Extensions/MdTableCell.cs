@@ -1,12 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdTableCell : IAddChild
+internal sealed class MdTableCell : TextElementWithChilds
 {
-    public TextElement TextElement => tableCell;
+    public override TextElement TextElement => tableCell;
     public TableCell TableCell => tableCell;
 
     private readonly TableCell tableCell;
@@ -22,7 +21,7 @@ internal sealed class MdTableCell : IAddChild
         };
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         TextElement? element = child.TextElement;
 

@@ -5,9 +5,9 @@ using Markdig.Syntax;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdList : IAddChild
+internal sealed class MdList : TextElementWithChilds
 {
-    public TextElement TextElement => list;
+    public override TextElement TextElement => list;
 
     private readonly List list;
     private readonly bool isOrdered;
@@ -36,7 +36,7 @@ internal sealed class MdList : IAddChild
         };
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         // todo
         if (child is not MdListItem listItem)

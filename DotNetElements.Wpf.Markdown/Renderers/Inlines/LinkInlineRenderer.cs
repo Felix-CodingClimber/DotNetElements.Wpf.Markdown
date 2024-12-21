@@ -34,7 +34,6 @@ internal sealed class LinkInlineRenderer : DocumentRenderer<LinkInline>
             };
 
             renderer.Push(hyperlink);
-
             renderer.WriteChildren(obj);
             renderer.Pop();
         }

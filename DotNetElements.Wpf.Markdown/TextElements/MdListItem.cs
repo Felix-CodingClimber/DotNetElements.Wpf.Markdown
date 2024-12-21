@@ -2,9 +2,9 @@
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdListItem : IAddChild
+internal sealed class MdListItem : TextElementWithChilds
 {
-    public TextElement TextElement => listItem;
+    public override TextElement TextElement => listItem;
     public ListItem ListItem => listItem;
 
     private readonly ListItem listItem;
@@ -17,7 +17,7 @@ internal sealed class MdListItem : IAddChild
         };
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         TextElement? element = child.TextElement;
 

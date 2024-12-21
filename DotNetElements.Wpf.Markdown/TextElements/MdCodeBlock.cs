@@ -4,9 +4,9 @@ using Markdig.Syntax;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdCodeBlock : IAddChild
+internal sealed class MdCodeBlock : TextElementBase
 {
-    public TextElement TextElement => paragraph;
+    public override TextElement TextElement => paragraph;
 
     private readonly Paragraph paragraph;
 
@@ -37,7 +37,4 @@ internal sealed class MdCodeBlock : IAddChild
         // Remove last line break
         paragraph.Inlines.Remove(paragraph.Inlines.LastInline);
     }
-
-    // Not used here
-    public void AddChild(IAddChild child) => throw new InvalidOperationException();
 }

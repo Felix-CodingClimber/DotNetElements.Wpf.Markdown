@@ -3,9 +3,9 @@ using System.Windows.Documents;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdHeading : IAddChild
+internal sealed class MdHeading : TextElementWithChilds
 {
-    public TextElement TextElement => paragraph;
+    public override TextElement TextElement => paragraph;
 
     private readonly Paragraph paragraph;
 
@@ -16,7 +16,7 @@ internal sealed class MdHeading : IAddChild
         SetProperties(headingBlock.Level, theme);
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         // todo
         if (child.TextElement is not Inline inlineChild)

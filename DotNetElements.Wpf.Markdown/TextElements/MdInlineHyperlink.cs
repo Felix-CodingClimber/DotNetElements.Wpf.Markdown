@@ -5,9 +5,9 @@ using Markdig.Syntax.Inlines;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdInlineHyperlink : IAddChild
+internal sealed class MdInlineHyperlink : TextElementWithChilds
 {
-    public TextElement TextElement => hyperlink;
+    public override TextElement TextElement => hyperlink;
 
     public event RoutedEventHandler ClickEvent
     {
@@ -33,7 +33,7 @@ internal sealed class MdInlineHyperlink : IAddChild
         };
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         // todo
         if (child.TextElement is not System.Windows.Documents.Inline inlineChild)

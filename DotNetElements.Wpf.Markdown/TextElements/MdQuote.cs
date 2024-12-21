@@ -2,9 +2,9 @@
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdQuote : IAddChild
+internal sealed class MdQuote : TextElementWithChilds
 {
-    public TextElement TextElement => section;
+    public override TextElement TextElement => section;
     public Section Section => section;
 
     private readonly Section section;
@@ -22,7 +22,7 @@ internal sealed class MdQuote : IAddChild
         };
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         TextElement? element = child.TextElement;
 

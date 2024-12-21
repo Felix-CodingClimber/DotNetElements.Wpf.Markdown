@@ -15,7 +15,7 @@ internal class DocumentMarkdownWriter : RendererBase
     public MarkdownConfig Config { get; set; } = MarkdownConfig.Default;
     public MarkdownThemes Theme { get; set; } = MarkdownThemes.Default;
 
-    private readonly Stack<IAddChild> stack = [];
+    private readonly Stack<TextElementWithChilds> stack = [];
     private char[] buffer;
 
     public DocumentMarkdownWriter(MdFlowDocument document, Action<Uri> onLinkClicked, MarkdownConfig? config = null)
@@ -93,23 +93,23 @@ internal class DocumentMarkdownWriter : RendererBase
         }
     }
 
-    public void Push(IAddChild child)
+    public void Push(TextElementWithChilds child)
     {
         stack.Push(child);
     }
 
     public void Pop()
     {
-        IAddChild popped = stack.Pop();
+        TextElementWithChilds popped = stack.Pop();
         stack.Peek().AddChild(popped);
     }
 
-    public void WriteBlock(IAddChild obj)
+    public void WriteBlock(TextElementBase obj)
     {
         stack.Peek().AddChild(obj);
     }
 
-    public void WriteInline(IAddChild inline)
+    public void WriteInline(TextElementBase inline)
     {
         AddInline(stack.Peek(), inline);
     }
@@ -151,7 +151,7 @@ internal class DocumentMarkdownWriter : RendererBase
         }
     }
 
-    private static void AddInline(IAddChild parent, IAddChild inline)
+    private static void AddInline(TextElementWithChilds parent, TextElementBase inline)
     {
         parent.AddChild(inline);
     }

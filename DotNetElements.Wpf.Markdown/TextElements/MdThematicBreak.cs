@@ -4,9 +4,9 @@ using System.Windows.Shapes;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdThematicBreak : IAddChild
+internal sealed class MdThematicBreak : TextElementBase
 {
-    public TextElement TextElement => paragraph;
+    public override TextElement TextElement => paragraph;
 
     private readonly Paragraph paragraph;
 
@@ -27,7 +27,4 @@ internal sealed class MdThematicBreak : IAddChild
         inlineUIContainer.Child = line;
         paragraph.Inlines.Add(inlineUIContainer);
     }
-
-    // Not used here
-    public void AddChild(IAddChild child) => throw new InvalidOperationException();
 }

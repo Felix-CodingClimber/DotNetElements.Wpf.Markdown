@@ -1,11 +1,10 @@
 ﻿using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdInlineText : IAddChild
+internal sealed class MdInlineText : TextElementBase
 {
-	public TextElement TextElement => run;
+	public override TextElement TextElement => run;
 	public Run Run => run;
 
 	private readonly Run run;
@@ -17,7 +16,4 @@ internal sealed class MdInlineText : IAddChild
 			Text = text
 		};
 	}
-
-	// Not used here
-	public void AddChild(IAddChild child) => throw new InvalidOperationException();
 }

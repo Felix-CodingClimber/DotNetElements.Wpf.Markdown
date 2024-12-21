@@ -1,11 +1,10 @@
 ﻿using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdParagraph : IAddChild
+internal sealed class MdParagraph : TextElementWithChilds
 {
-	public TextElement TextElement => paragraph;
+	public override TextElement TextElement => paragraph;
 
 	private readonly Paragraph paragraph;
 
@@ -14,7 +13,7 @@ internal sealed class MdParagraph : IAddChild
 		paragraph = new Paragraph();
 	}
 
-	public void AddChild(IAddChild child)
+	public override void AddChild(TextElementBase child)
 	{
 		if (child.TextElement is Inline inlineChild)
 		{

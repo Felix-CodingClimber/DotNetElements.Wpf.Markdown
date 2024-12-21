@@ -2,9 +2,8 @@
 
 namespace DotNetElements.Wpf.Markdown.Core;
 
-public interface IAddChild
+public abstract class TextElementBase
 {
     // todo check nullable
-    TextElement TextElement { get; }
-    void AddChild(IAddChild child);
+    public abstract TextElement TextElement { get; }
 }

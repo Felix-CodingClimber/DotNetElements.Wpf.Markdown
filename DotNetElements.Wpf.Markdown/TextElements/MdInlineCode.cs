@@ -3,9 +3,9 @@ using Markdig.Syntax.Inlines;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdInlineCode : IAddChild
+internal sealed class MdInlineCode : TextElementBase
 {
-	public TextElement TextElement => run;
+	public override TextElement TextElement => run;
 
 	private readonly Run run;
 
@@ -20,7 +20,4 @@ internal sealed class MdInlineCode : IAddChild
         };
         //run.Padding = config.InlineCodePadding; // todo not working
     }
-
-    // Not used here
-    public void AddChild(IAddChild child) => throw new InvalidOperationException();
 }

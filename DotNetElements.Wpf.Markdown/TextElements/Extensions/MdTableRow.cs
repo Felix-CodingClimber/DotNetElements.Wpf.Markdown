@@ -1,11 +1,10 @@
 ﻿using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdTableRow : IAddChild
+internal sealed class MdTableRow : TextElementWithChilds
 {
-    public TextElement TextElement => tableRow;
+    public override TextElement TextElement => tableRow;
     public TableRow TableRow => tableRow;
 
     public bool IsHeader { get; private set; }
@@ -25,7 +24,7 @@ internal sealed class MdTableRow : IAddChild
 
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         // todo
         if (child is not MdTableCell tableCell)

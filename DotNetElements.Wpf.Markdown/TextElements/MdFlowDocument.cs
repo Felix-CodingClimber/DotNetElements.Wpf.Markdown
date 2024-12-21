@@ -1,15 +1,14 @@
 ﻿using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdFlowDocument : IAddChild
+internal sealed class MdFlowDocument : TextElementWithChilds
 {
-	public TextElement TextElement => throw new InvalidOperationException();
+	public override TextElement TextElement => throw new InvalidOperationException();
 
 	public FlowDocument Document { get; private set; } = new FlowDocument();
 
-	public void AddChild(IAddChild child)
+	public override void AddChild(TextElementBase child)
 	{
 		TextElement? element = child.TextElement;
 

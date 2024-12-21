@@ -1,13 +1,12 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 using Markdig.Extensions.TaskLists;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdTaskListCheckBox : IAddChild
+internal sealed class MdTaskListCheckBox : TextElementBase
 {
-    public TextElement TextElement => container;
+    public override TextElement TextElement => container;
 
     private readonly InlineUIContainer container;
 
@@ -27,7 +26,4 @@ internal sealed class MdTaskListCheckBox : IAddChild
 
         container.Child = checkBox;
     }
-
-    // Not used here
-    public void AddChild(IAddChild child) => throw new InvalidOperationException();
 }

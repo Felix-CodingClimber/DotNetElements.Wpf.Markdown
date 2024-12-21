@@ -3,9 +3,9 @@ using System.Windows.Documents;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdEmphasisInline : IAddChild, ICascadeChild
+internal sealed class MdEmphasisInline : TextElementWithChilds, ICascadeChild
 {
-    public TextElement TextElement => span;
+    public override TextElement TextElement => span;
 
     private readonly Span span;
     private Span? subSuperSpan;
@@ -15,7 +15,7 @@ internal sealed class MdEmphasisInline : IAddChild, ICascadeChild
         span = new Span();
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         try
         {
@@ -39,7 +39,7 @@ internal sealed class MdEmphasisInline : IAddChild, ICascadeChild
         }
     }
 
-    public void InheritProperties(IAddChild parent)
+    public void InheritProperties(TextElementBase parent)
     {
         if (subSuperSpan is null)
             return;

@@ -4,9 +4,9 @@ using System.Windows.Documents;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdImage : IAddChild
+internal sealed class MdImage : TextElementBase
 {
-    public TextElement TextElement => container;
+    public override TextElement TextElement => container;
 
     private readonly InlineUIContainer container;
 
@@ -64,9 +64,6 @@ internal sealed class MdImage : IAddChild
 
         container.Child = image;
     }
-
-    // Not used here
-    public void AddChild(IAddChild child) => throw new InvalidOperationException();
 
     private async void LoadImageAsync(object sender, RoutedEventArgs e)
     {

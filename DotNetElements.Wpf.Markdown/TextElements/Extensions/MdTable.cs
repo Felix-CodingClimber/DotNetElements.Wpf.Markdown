@@ -1,11 +1,10 @@
 ﻿using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdTable : IAddChild
+internal sealed class MdTable : TextElementWithChilds
 {
-    public TextElement TextElement => table;
+    public override TextElement TextElement => table;
 
     private readonly Table table;
 
@@ -19,7 +18,7 @@ internal sealed class MdTable : IAddChild
         };
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         // todo
         if (child is not MdTableRow tableRow)
@@ -46,6 +45,5 @@ internal sealed class MdTable : IAddChild
             bodyRowGroup.Rows.Add(tableRow.TableRow);
             table.RowGroups.Add(bodyRowGroup);
         }
-
     }
 }

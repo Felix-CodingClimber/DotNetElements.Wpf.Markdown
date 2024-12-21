@@ -1,11 +1,10 @@
 ﻿using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdLineBreak : IAddChild
+internal sealed class MdLineBreak : TextElementBase
 {
-	public TextElement TextElement => lineBreak;
+	public override TextElement TextElement => lineBreak;
 
 	private readonly LineBreak lineBreak;
 
@@ -13,7 +12,4 @@ internal sealed class MdLineBreak : IAddChild
 	{
 		lineBreak = new LineBreak();
 	}
-
-	// Not used here
-	public void AddChild(IAddChild child) => throw new InvalidOperationException();
 }

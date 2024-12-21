@@ -5,9 +5,9 @@ using Markdig.Extensions.Alerts;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
-internal sealed class MdAlert : IAddChild
+internal sealed class MdAlert : TextElementWithChilds
 {
-    public TextElement TextElement => section;
+    public override TextElement TextElement => section;
     public Section Section => section;
 
     private readonly Section section;
@@ -42,7 +42,7 @@ internal sealed class MdAlert : IAddChild
         section.Blocks.Add(headerParagraph);
     }
 
-    public void AddChild(IAddChild child)
+    public override void AddChild(TextElementBase child)
     {
         TextElement? element = child.TextElement;
 

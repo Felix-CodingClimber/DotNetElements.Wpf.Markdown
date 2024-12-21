@@ -5,5 +5,5 @@
 /// </summary>
 public interface ICascadeChild
 {
-    void InheritProperties(IAddChild parent);
+    void InheritProperties(TextElementBase parent);
 }
