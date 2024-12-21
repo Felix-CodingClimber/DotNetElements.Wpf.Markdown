@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DotNetElements.Wpf.Markdown.Core;
@@ -21,7 +22,8 @@ public partial class MainWindow : Window
         config.FeaturePipeTablesSupported = false;
         MarkdownTextBlock.Config = config;
 
-        MarkdownInput.Text = ExampleMarkdown;
+        //MarkdownInput.Text = ExampleMarkdown;
+        MarkdownInput.Text = File.ReadAllText("examples\\CommonMark.md");
     }
 
     private void MarkdownTextBlock_OnMarkdownParsedCommand(MarkdownDocument? markdownDocument)
