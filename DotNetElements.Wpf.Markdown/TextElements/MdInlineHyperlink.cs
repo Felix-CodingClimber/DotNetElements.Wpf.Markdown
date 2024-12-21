@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Documents;
-using DotNetElements.Wpf.Markdown.Core;
 using Markdig.Syntax.Inlines;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
@@ -35,18 +34,12 @@ internal sealed class MdInlineHyperlink : TextElementWithChilds
 
     public override void AddChild(TextElementBase child)
     {
-        // todo
         if (child.TextElement is not System.Windows.Documents.Inline inlineChild)
-        {
-            System.Diagnostics.Debug.WriteLine($"Invalid hyperlink child {child}"); // todo debug
-
-            return;
-        }
+            throw new InvalidOperationException($"Invalid hyperlink child {child}");
 
         try
         {
             hyperlink.Inlines.Add(inlineChild);
-            // todo add support for click handler
         }
         catch
         {

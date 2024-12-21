@@ -5,8 +5,8 @@ namespace DotNetElements.Wpf.Markdown.Renderers;
 
 internal sealed class ListRenderer : DocumentRenderer<ListBlock>
 {
-	protected override void Write(DocumentMarkdownWriter renderer, ListBlock obj)
-	{
+    protected override void Write(DocumentMarkdownWriter renderer, ListBlock obj)
+    {
         ArgumentNullException.ThrowIfNull(renderer);
         ArgumentNullException.ThrowIfNull(obj);
 

@@ -4,7 +4,7 @@ public record MarkdownConfig
 {
     public static MarkdownConfig Default => new();
 
-	public string? BaseUrl { get; set; }
+    public string? BaseUrl { get; set; }
     public IImageProvider? ImageProvider { get; set; }
     public bool FeatureImageSizeSupported { get; set; } = true; // todo use subclass like MarkdownThemes or enum flags for features
     public bool FeatureTaskListSupported { get; set; } = true; // todo use subclass like MarkdownThemes or enum flags for features

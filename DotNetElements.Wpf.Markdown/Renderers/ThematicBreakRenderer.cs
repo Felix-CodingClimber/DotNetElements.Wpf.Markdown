@@ -5,13 +5,13 @@ namespace DotNetElements.Wpf.Markdown.Renderers;
 
 internal sealed class ThematicBreakRenderer : DocumentRenderer<ThematicBreakBlock>
 {
-	protected override void Write(DocumentMarkdownWriter renderer, ThematicBreakBlock obj)
-	{
-		ArgumentNullException.ThrowIfNull(renderer);
-		ArgumentNullException.ThrowIfNull(obj);
+    protected override void Write(DocumentMarkdownWriter renderer, ThematicBreakBlock obj)
+    {
+        ArgumentNullException.ThrowIfNull(renderer);
+        ArgumentNullException.ThrowIfNull(obj);
 
-		MdThematicBreak thematicBreak = new(renderer.Theme);
+        MdThematicBreak thematicBreak = new(renderer.Theme);
 
-		renderer.WriteBlock(thematicBreak);
-	}
+        renderer.WriteBlock(thematicBreak);
+    }
 }

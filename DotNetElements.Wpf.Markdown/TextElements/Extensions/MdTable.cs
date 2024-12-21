@@ -20,13 +20,8 @@ internal sealed class MdTable : TextElementWithChilds
 
     public override void AddChild(TextElementBase child)
     {
-        // todo
         if (child is not MdTableRow tableRow)
-        {
-            System.Diagnostics.Debug.WriteLine($"Invalid table child {child}"); // todo debug
-
-            return;
-        }
+            throw new InvalidOperationException($"Invalid table child {child}");
 
         if (tableRow.IsHeader)
         {

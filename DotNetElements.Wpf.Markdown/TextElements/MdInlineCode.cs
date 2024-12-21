@@ -5,12 +5,12 @@ namespace DotNetElements.Wpf.Markdown.TextElements;
 
 internal sealed class MdInlineCode : TextElementBase
 {
-	public override TextElement TextElement => run;
+    public override TextElement TextElement => run;
 
-	private readonly Run run;
+    private readonly Run run;
 
-	public MdInlineCode(CodeInline codeInline, MarkdownThemes theme)
-	{
+    public MdInlineCode(CodeInline codeInline, MarkdownThemes theme)
+    {
         run = new Run(codeInline.Content)
         {
             Background = theme.InlineCodeBackground,

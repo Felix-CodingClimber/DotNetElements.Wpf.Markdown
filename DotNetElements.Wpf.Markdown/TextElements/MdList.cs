@@ -38,13 +38,8 @@ internal sealed class MdList : TextElementWithChilds
 
     public override void AddChild(TextElementBase child)
     {
-        // todo
         if (child is not MdListItem listItem)
-        {
-            System.Diagnostics.Debug.WriteLine($"Invalid list item child {child}"); // todo debug
-
-            return;
-        }
+            throw new InvalidOperationException($"Invalid list item child {child}");
 
         list.ListItems.Add(listItem.ListItem);
     }

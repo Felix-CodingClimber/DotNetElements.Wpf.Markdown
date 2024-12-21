@@ -1,5 +1,5 @@
-﻿using Markdig.Syntax;
-using System.Windows.Documents;
+﻿using System.Windows.Documents;
+using Markdig.Syntax;
 
 namespace DotNetElements.Wpf.Markdown.TextElements;
 
@@ -18,13 +18,8 @@ internal sealed class MdHeading : TextElementWithChilds
 
     public override void AddChild(TextElementBase child)
     {
-        // todo
         if (child.TextElement is not Inline inlineChild)
-        {
-            System.Diagnostics.Debug.WriteLine($"Invalid heading child {child}"); // todo debug
-
-            return;
-        }
+            throw new InvalidOperationException($"Invalid heading child {child}");
 
         if (child is ICascadeChild cascadeChild)
             cascadeChild.InheritProperties(this);

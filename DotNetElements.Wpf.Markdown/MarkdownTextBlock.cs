@@ -1,9 +1,9 @@
-﻿using DotNetElements.Wpf.Markdown.TextElements;
-using Markdig;
-using Markdig.Syntax;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using DotNetElements.Wpf.Markdown.TextElements;
+using Markdig;
+using Markdig.Syntax;
 
 namespace DotNetElements.Wpf.Markdown;
 

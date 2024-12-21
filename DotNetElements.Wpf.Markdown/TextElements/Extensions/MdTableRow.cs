@@ -26,13 +26,8 @@ internal sealed class MdTableRow : TextElementWithChilds
 
     public override void AddChild(TextElementBase child)
     {
-        // todo
         if (child is not MdTableCell tableCell)
-        {
-            System.Diagnostics.Debug.WriteLine($"Invalid table row child {child}"); // todo debug
-
-            return;
-        }
+            throw new InvalidOperationException($"Invalid table row child {child}");
 
         tableRow.Cells.Add(tableCell.TableCell);
     }
