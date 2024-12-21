@@ -17,6 +17,10 @@ public partial class MainWindow : Window
         MarkdownTextBlock.OnMarkdownParsed += MarkdownTextBlock_OnMarkdownParsed;
         MarkdownTextBlock.MarkdownParsedCommand = new RelayCommand<MarkdownDocument>(MarkdownTextBlock_OnMarkdownParsedCommand);
 
+        MarkdownConfig config = MarkdownConfig.Default;
+        config.FeaturePipeTablesSupported = false;
+        MarkdownTextBlock.Config = config;
+
         MarkdownInput.Text = ExampleMarkdown;
     }
 

@@ -161,7 +161,7 @@ internal class DocumentMarkdownWriter : RendererBase
         // Extension renderers
         // They need to be registered first as some of the extension blocks inherit from default blocks
         // To make sure the extension renderer is picked up we register it first
-        if (Config.FeatureTablesSupported)
+        if (Config.FeaturePipeTablesSupported)
             ObjectRenderers.Add(new TableRenderer());
 
         if (Config.FeatureTaskListSupported)
@@ -177,16 +177,12 @@ internal class DocumentMarkdownWriter : RendererBase
         ObjectRenderers.Add(new ParagraphRenderer());
         ObjectRenderers.Add(new QuoteBlockRenderer());
         ObjectRenderers.Add(new ThematicBreakRenderer());
-        //ObjectRenderers.Add(new HtmlBlockRenderer());
 
         // Default inline renderers
-        //ObjectRenderers.Add(new AutoLinkInlineRenderer());
         ObjectRenderers.Add(new CodeInlineRenderer());
-        //ObjectRenderers.Add(new DelimiterInlineRenderer());
         ObjectRenderers.Add(new EmphasisInlineRenderer());
         ObjectRenderers.Add(new LineBreakInlineRenderer());
         ObjectRenderers.Add(new LinkInlineRenderer());
         ObjectRenderers.Add(new LiteralInlineRenderer());
-        //ObjectRenderers.Add(new ContainerInlineRenderer());
     }
 }

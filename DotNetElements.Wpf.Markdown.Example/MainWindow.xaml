@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="DotNetElements.Wpf.Markdown Example Application"
     Width="1200"
-    Height="800"
+    Height="700"
     Background="LightBlue"
     mc:Ignorable="d">
     <Grid Margin="10">

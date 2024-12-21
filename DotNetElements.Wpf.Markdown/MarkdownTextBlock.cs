@@ -118,8 +118,9 @@ public partial class MarkdownTextBlock : Control
     private const string MarkdownContainerName = "MarkdownContainer";
 
     private FlowDocumentScrollViewer? container;
+
+    private readonly MdFlowDocument document;
     private MarkdownPipeline pipeline;
-    private MdFlowDocument document;
     private DocumentMarkdownWriter? renderer;
 
     static MarkdownTextBlock()
@@ -130,13 +131,24 @@ public partial class MarkdownTextBlock : Control
     public MarkdownTextBlock()
     {
         document = new MdFlowDocument();
-        pipeline = new MarkdownPipelineBuilder()
-            .UseEmphasisExtras()
-            //.UseAutoLinks()
-            .UseTaskLists() // todo check if feature is enabled in config >>> need to reset the pipeline if the config changes
-            .UsePipeTables() // todo check if feature is enabled in config >>> need to reset the pipeline if the config changes
-            .UseAlertBlocks() // todo check if feature is enabled in config >>> need to reset the pipeline if the config changes
-            .Build();
+
+        MarkdownConfig defaultConfig = MarkdownConfig.Default;
+
+        MarkdownPipelineBuilder pipelineBuilder = new MarkdownPipelineBuilder();
+
+        if (defaultConfig.FeatureEmphasisExtrasSupported)
+            pipelineBuilder.UseEmphasisExtras();
+
+        if (defaultConfig.FeatureTaskListSupported)
+            pipelineBuilder.UseTaskLists();
+
+        if (defaultConfig.FeaturePipeTablesSupported)
+            pipelineBuilder.UsePipeTables();
+
+        if (defaultConfig.FeatureAlertBlocksSupported)
+            pipelineBuilder.UseAlertBlocks();
+
+        pipeline = pipelineBuilder.Build();
     }
 
     public override void OnApplyTemplate()
@@ -156,6 +168,24 @@ public partial class MarkdownTextBlock : Control
             return;
 
         renderer.Config = config;
+
+        MarkdownPipelineBuilder pipelineBuilder = new MarkdownPipelineBuilder();
+
+        if (config.FeatureEmphasisExtrasSupported)
+            pipelineBuilder.UseEmphasisExtras();
+
+        if (config.FeatureTaskListSupported)
+            pipelineBuilder.UseTaskLists();
+
+        if (config.FeaturePipeTablesSupported)
+            pipelineBuilder.UsePipeTables();
+
+        if (config.FeatureAlertBlocksSupported)
+            pipelineBuilder.UseAlertBlocks();
+
+        pipeline = pipelineBuilder.Build();
+
+        ApplyText(true);
     }
 
     private void ApplyTheme(MarkdownThemes theme)
