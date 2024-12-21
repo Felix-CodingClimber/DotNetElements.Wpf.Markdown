@@ -137,9 +137,13 @@ This is a quote with two lines
 
 ---
 
-This is a image `![Image](img/exampleImg1.png)`
+This is a local image `![Image](img/exampleImg1.png)`
 
 ![Image](img/exampleImg1.png)
+
+This is a web image `![Image](https://picsum.photos/seed/picsum/200/300)`
+
+![Image](https://picsum.photos/seed/picsum/200/300)
 
 This is a image with a defined size `![Image](img/exampleImg1.png=x100)`
 
