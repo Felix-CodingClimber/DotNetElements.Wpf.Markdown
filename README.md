@@ -6,8 +6,8 @@ At the current state, all common markdown features are supported (There might be
 Styling options and default style for the markdown blocks need to be improved.
 
 #### Missing features to implement:
-- [ ] Images from URL
 - [ ] Option to implement other Markdig extensions
+- [ ] Default theme for dark mode
 
 ## Recommended setup
 
