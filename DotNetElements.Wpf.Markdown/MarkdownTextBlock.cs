@@ -134,21 +134,7 @@ public partial class MarkdownTextBlock : Control
 
         MarkdownConfig defaultConfig = MarkdownConfig.Default;
 
-        MarkdownPipelineBuilder pipelineBuilder = new MarkdownPipelineBuilder();
-
-        if (defaultConfig.FeatureEmphasisExtrasSupported)
-            pipelineBuilder.UseEmphasisExtras();
-
-        if (defaultConfig.FeatureTaskListSupported)
-            pipelineBuilder.UseTaskLists();
-
-        if (defaultConfig.FeaturePipeTablesSupported)
-            pipelineBuilder.UsePipeTables();
-
-        if (defaultConfig.FeatureAlertBlocksSupported)
-            pipelineBuilder.UseAlertBlocks();
-
-        pipeline = pipelineBuilder.Build();
+        pipeline = BuildPipeline(defaultConfig);
     }
 
     public override void OnApplyTemplate()
@@ -169,21 +155,7 @@ public partial class MarkdownTextBlock : Control
 
         renderer.Config = config;
 
-        MarkdownPipelineBuilder pipelineBuilder = new MarkdownPipelineBuilder();
-
-        if (config.FeatureEmphasisExtrasSupported)
-            pipelineBuilder.UseEmphasisExtras();
-
-        if (config.FeatureTaskListSupported)
-            pipelineBuilder.UseTaskLists();
-
-        if (config.FeaturePipeTablesSupported)
-            pipelineBuilder.UsePipeTables();
-
-        if (config.FeatureAlertBlocksSupported)
-            pipelineBuilder.UseAlertBlocks();
-
-        pipeline = pipelineBuilder.Build();
+        pipeline = BuildPipeline(config);
 
         ApplyText(true);
     }
@@ -233,5 +205,27 @@ public partial class MarkdownTextBlock : Control
         pipeline.Setup(renderer);
 
         ApplyText(false);
+    }
+
+    private static MarkdownPipeline BuildPipeline(MarkdownConfig config)
+    {
+        MarkdownPipelineBuilder pipelineBuilder = new MarkdownPipelineBuilder();
+
+        if (config.FeatureEmphasisExtrasSupported)
+            pipelineBuilder.UseEmphasisExtras();
+
+        if (config.FeatureTaskListSupported)
+            pipelineBuilder.UseTaskLists();
+
+        if (config.FeaturePipeTablesSupported)
+            pipelineBuilder.UsePipeTables();
+
+        if (config.FeatureAlertBlocksSupported)
+            pipelineBuilder.UseAlertBlocks();
+
+        if (config.FeatureAutoLinksSupported)
+            pipelineBuilder.UseAutoLinks();
+
+        return pipelineBuilder.Build();
     }
 }

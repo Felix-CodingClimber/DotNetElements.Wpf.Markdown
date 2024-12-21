@@ -12,4 +12,5 @@ public record MarkdownConfig
     public bool FeatureTaskListSupported { get; set; } = true; // todo use subclass like MarkdownThemes or enum flags for features
     public bool FeaturePipeTablesSupported { get; set; } = true; // todo use subclass like MarkdownThemes or enum flags for features
     public bool FeatureAlertBlocksSupported { get; set; } = true; // todo use subclass like MarkdownThemes or enum flags for features
+    public bool FeatureAutoLinksSupported { get; set; } = true; // todo use subclass like MarkdownThemes or enum flags for features
 }

@@ -70,6 +70,10 @@ This is a inline `code` element
 
 This is a [Link](http://a.com)
 
+This is a auto generated link http://a.com
+
+This is a auto generated mailto link mailto:email@toto.com
+
 ---
 
 Nested style test
