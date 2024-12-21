@@ -5,11 +5,7 @@ This implementation uses the popular [Markdig](https://github.com/xoofx/markdig)
 At the current state, all common markdown features are supported (There might be some missing edge cases).
 Styling options and default style for the markdown blocks need to be improved.
 
-#### Known problems:
-- [ ] Nested styles, sub and super
-
 #### Missing features to implement:
-- [ ] Github alert containers
 - [ ] Images from URL
 - [ ] Option to implement other Markdig extensions
 
